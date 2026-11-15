@@ -28,25 +28,25 @@ const boards = [
     id: 'teachers',
     title: '学院导师联系方式',
     description: '按学院浏览教师名录；仅展示已核实的官方公开联系方式。',
-    icon: '师',
+    icon: '1',
   },
   {
     id: 'groups',
     title: '校园交流群',
     description: '查找校园交流群并快速复制群号。',
-    icon: '群',
+    icon: '3',
   },
   {
     id: 'colleges',
     title: '学院与辅导员联系方式',
     description: '汇总学院咨询方式与新生辅导员信息。',
-    icon: '院',
+    icon: '2',
   },
   {
     id: 'services',
     title: '校园生活服务',
     description: '查看快递运输、毕业生托运及水电缴费指南。',
-    icon: '服',
+    icon: '4',
   },
 ]
 
