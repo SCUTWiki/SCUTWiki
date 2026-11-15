@@ -1028,3 +1028,8 @@ html[data-theme='light'] .hp-note { color: rgba(19, 34, 27, 0.42); }
 
 /* 翻面后：背面（外皮）的拉手出现在右侧 */
 .hp-folder-back .hp-pull { left: auto; right: -10px; }
+
+/* 翻面时只让“当前朝外”的那一面可点击，避免隐藏面的拉手抢到点击 */
+.hp-folder-face { pointer-events: none; }
+.hp-folder:not(.flipped) .hp-folder-front { pointer-events: auto; }
+.hp-folder.flipped .hp-folder-back { pointer-events: auto; }
