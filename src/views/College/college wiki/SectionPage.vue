@@ -6,9 +6,9 @@
  *  · 底部「上一篇 / 下一篇」按全局篇序自动计算
  */
 import { computed, ref, watch, nextTick, onMounted } from 'vue'
-import WikiLayout from '../../collage components/WikiLayout.vue'
-import Stub from '../../collage components/Stub.vue'
-import PrevNext from '../../collage components/PrevNext.vue'
+import WikiLayout from '../college components/WikiLayout.vue'
+import Stub from '../college components/Stub.vue'
+import PrevNext from '../college components/PrevNext.vue'
 import { findPage, pageToc, neighbors } from './toc.js'
 
 const props = defineProps({

@@ -12,7 +12,7 @@
  * Title.vue 放在全局，点品牌回首页。
  */
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import Title from '../../collage components/Title.vue'
+import Title from '../college components/Title.vue'
 import WikiHome from './WikiHome.vue'
 import Campus from './Campus.vue'
 import Study from './Study.vue'

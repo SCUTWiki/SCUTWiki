@@ -4,8 +4,8 @@
  * 卡片与目录里的每一项都是链接，跳到对应大页面 / 页面内条目。
  * 导航地址统一走 navigate(path)：hash 路由由 UniversityMain.vue 渲染。
  */
-import Title from '../../collage components/Title.vue'
-import { cards, toc } from './toc.js'
+import Title from './college components/Title.vue'
+import { cards, toc } from './college wiki/toc.js'
 
 defineProps({
   navigate: { type: Function, required: true },
