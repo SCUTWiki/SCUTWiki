@@ -17,8 +17,8 @@ let timer = null
 
 function startPeek() {
   clearTimeout(timer)
-  // 悬停满 3 秒才弹出代表内容
-  timer = setTimeout(() => { peek.value = true }, 3000)
+  // 悬停满 1 秒才弹出代表内容
+  timer = setTimeout(() => { peek.value = true }, 1000)
 }
 
 function stopPeek() {

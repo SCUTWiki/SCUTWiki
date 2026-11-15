@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
 
 defineProps({
-  variant: { type: String, default: 'page' },
+  variant: { type: String, default: 'home' },
 })
 
 const router = useRouter()

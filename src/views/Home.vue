@@ -1,6 +1,4 @@
 <script setup>
-import '../assets/home.css'
-
 import Title from '../components/Title.vue'
 import ModuleCard from '../components/home/ModuleCard.vue'
 import QuickFolder from '../components/home/QuickFolder.vue'
@@ -95,9 +93,9 @@ const footerLinks = [
 </script>
 
 <template>
-  <div class="hp">
-    <Title variant="home" />
+  <Title variant="home" />
 
+  <div class="hp">
     <main class="hp-main">
       <div class="hp-wrap">
         <div class="hp-grid">
