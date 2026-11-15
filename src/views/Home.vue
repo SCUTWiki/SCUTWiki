@@ -93,7 +93,7 @@ const footerLinks = [
 </script>
 
 <template>
-  <Title variant="home" />
+  <Title variant="home" :compact="false" />
 
   <div class="hp">
     <main class="hp-main">

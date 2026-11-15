@@ -5,6 +5,8 @@ import { useTheme } from '../composables/useTheme'
 
 defineProps({
   variant: { type: String, default: 'home' },
+  // 内页用窄带，首页传 :compact="false"
+  compact: { type: Boolean, default: true },
 })
 
 const router = useRouter()
@@ -27,7 +29,7 @@ function submitSearch() {
 
 <template>
   <!-- 首页：整条绿色带 + 工具条 + 旗子 -->
-  <header v-if="variant === 'home'" class="hp-head">
+  <header v-if="variant === 'home'" class="hp-head" :class="{ 'is-compact': compact }">
     <div class="hp-band" aria-hidden="true">
       <svg viewBox="0 0 1512 240" preserveAspectRatio="none">
         <defs>
