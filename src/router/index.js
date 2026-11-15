@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import College from '../views/College/College.vue'
+import College from '../views/College/WikiHome.vue'
 import Faculty from '../views/Faculty/Faculty.vue'
 import Club from '../views/Club/Club.vue'
 import Opensource from '../views/OpenSource/Opensource.vue'
