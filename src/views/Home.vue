@@ -1,7 +1,7 @@
 <script setup>
 import '../assets/home.css'
 
-import HomeTop from '../components/home/HomeTop.vue'
+import Title from '../components/Title.vue'
 import ModuleCard from '../components/home/ModuleCard.vue'
 import QuickFolder from '../components/home/QuickFolder.vue'
 import StatsLedger from '../components/home/StatsLedger.vue'
@@ -14,6 +14,8 @@ const modules = [
     glyph: 'hall',
     href: '/college',
     desc: '报到、选课、考试与绩点，<br>新生最常走的那条路',
+    toc: ['新生报到', '选课', '考试与成绩', '绩点与保研'],
+    featured: '《2026 新生入学指南》已更新',
   },
   {
     index: '02',
@@ -21,6 +23,8 @@ const modules = [
     glyph: 'academy',
     href: '/faculty',
     desc: '按学院划分的课程、<br>导师与实验室信息',
+    toc: ['学院一览', '导师介绍', '实验室', '培养方案'],
+    featured: '计算机学院 · 实验室开放日',
   },
   {
     index: '03',
@@ -28,6 +32,8 @@ const modules = [
     glyph: 'org',
     href: '/club',
     desc: '校级与院级组织、<br>社团的招新与活动',
+    toc: ['校级组织', '院级组织', '社团招新'],
+    featured: '社团招新周 · 9 月 12 日开始',
   },
   {
     index: '04',
@@ -35,6 +41,8 @@ const modules = [
     glyph: 'branch',
     href: '/opensource',
     desc: '同学做的小工具、<br>脚本与开源项目',
+    toc: ['工具合集', '脚本仓库', '贡献指南'],
+    featured: '绩点计算器 v2 已上线',
   },
   {
     index: '05',
@@ -42,6 +50,8 @@ const modules = [
     glyph: 'phone',
     href: '/contact',
     desc: '老师、学长与合作者<br>的联系方式',
+    toc: ['学院办公室', '学长答疑', '投稿方式'],
+    featured: '投稿邮箱：wiki@scut.example',
   },
   {
     index: '06',
@@ -49,6 +59,8 @@ const modules = [
     glyph: 'person',
     href: '/more',
     desc: '杂文、群分享、<br>兴趣与随手记',
+    toc: ['二手交易', '常见风险', '杂文'],
+    featured: '二手交易群信息已更新',
   },
 ]
 
@@ -84,7 +96,7 @@ const footerLinks = [
 
 <template>
   <div class="hp">
-    <HomeTop />
+    <Title variant="home" />
 
     <main class="hp-main">
       <div class="hp-wrap">
@@ -106,6 +118,8 @@ const footerLinks = [
                 :desc="item.desc"
                 :glyph="item.glyph"
                 :href="item.href"
+                :toc="item.toc"
+                :featured="item.featured"
               />
             </section>
 
