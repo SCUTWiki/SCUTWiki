@@ -6,6 +6,9 @@ import Club from '../views/Club/Club.vue'
 import Opensource from '../views/OpenSource/Opensource.vue'
 import Contact from '../views/Contact/Contact.vue'
 import More from '../views/More/More.vue'
+import About from '../views/About.vue'
+import TeamContact from '../views/TeamContact.vue'
+import Support from '../views/Support.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -15,6 +18,9 @@ const routes = [
   { path: '/opensource', name: 'opensource', component: Opensource },
   { path: '/contact', name: 'contact', component: Contact },
   { path: '/more', name: 'more', component: More },
+  { path: '/about', name: 'about', component: About },
+  { path: '/contact-us', name: 'team-contact', component: TeamContact },
+  { path: '/support', name: 'support', component: Support },
 ]
 
 export default createRouter({

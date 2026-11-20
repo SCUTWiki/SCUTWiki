@@ -3,6 +3,10 @@ defineProps({
   links: { type: Array, required: true },
   gameHeight: { type: Number, default: 220 },
 })
+
+function isInternal(link) {
+  return typeof link.href === 'string' && link.href.startsWith('/')
+}
 </script>
 
 <template>
@@ -17,10 +21,16 @@ defineProps({
         <div class="hp-sep"><i /></div>
 
         <div class="hp-links">
-          <a v-for="link in links" :key="link.label" :href="link.href || '#'">
-            <span>{{ link.label }}</span>
-            <span>{{ link.index }}</span>
-          </a>
+          <template v-for="link in links" :key="link.label">
+            <RouterLink v-if="isInternal(link)" :to="link.href">
+              <span>{{ link.label }}</span>
+              <span>{{ link.index }}</span>
+            </RouterLink>
+            <a v-else :href="link.href || '#'">
+              <span>{{ link.label }}</span>
+              <span>{{ link.index }}</span>
+            </a>
+          </template>
         </div>
       </div>
     </div>

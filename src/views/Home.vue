@@ -86,9 +86,9 @@ const stats = [
 ]
 
 const footerLinks = [
-  { label: '关于我们', index: '01' },
-  { label: '联系我们 / 投稿', index: '02' },
-  { label: '支持 / 赞助我们', index: '03' },
+  { label: '关于我们', index: '01', href: '/about' },
+  { label: '联系我们 / 投稿', index: '02', href: '/contact-us' },
+  { label: '支持 / 赞助我们', index: '03', href: '/support' },
 ]
 </script>
 
