@@ -110,11 +110,18 @@ for (const abs of mdFiles) {
       console.warn(`[content] 引用的文件不存在，已跳过：${file}（来自 ${relPath}）`)
       continue
     }
-    if (!fileRefs.has(file)) fileRefs.set(file, { path: file, from: slug })
+    const prev = fileRefs.get(file)
+    // 同一个文件被多篇文章引用时，取最新的那篇的时间
+    if (!prev || String(updatedAt || '') > String(prev.updatedAt || '')) {
+      fileRefs.set(file, { path: file, from: slug, updatedAt })
+    }
   }
 
   for (const url of links) {
-    if (!linkRefs.has(url)) linkRefs.set(url, { url, from: slug })
+    const prev = linkRefs.get(url)
+    if (!prev || String(updatedAt || '') > String(prev.updatedAt || '')) {
+      linkRefs.set(url, { url, from: slug, updatedAt })
+    }
   }
 
   entries.push({
@@ -137,7 +144,7 @@ for (const abs of walk(CONTENT_DIR)) {
   const relPath = rel(abs)
   const ext = path.extname(relPath).slice(1).toLowerCase()
   if (!BINARY_EXT.has(ext) || ext === 'md') continue
-  if (!fileRefs.has(relPath)) fileRefs.set(relPath, { path: relPath, from: 'content' })
+  if (!fileRefs.has(relPath)) fileRefs.set(relPath, { path: relPath, from: 'content', updatedAt: null })
 }
 
 const files = [...fileRefs.values()].map((item) => ({
@@ -145,15 +152,25 @@ const files = [...fileRefs.values()].map((item) => ({
   title: path.basename(item.path),
   path: item.path,
   ext: path.extname(item.path).slice(1).toLowerCase(),
-  updatedAt: gitTime(item.path),
+  size: fs.existsSync(path.join(ROOT, item.path)) ? fs.statSync(path.join(ROOT, item.path)).size : 0,
+  from: item.from,
+  updatedAt: gitTime(item.path) || item.updatedAt || null,
 }))
 
 const links = [...linkRefs.values()].map((item) => ({
   type: 'link',
   title: item.url,
   url: item.url,
+  host: (() => {
+    try {
+      return new URL(item.url).hostname.replace(/^www\./, '')
+    } catch {
+      return ''
+    }
+  })(),
   path: `content:${item.from}`,
-  updatedAt: null,
+  from: item.from,
+  updatedAt: item.updatedAt || null,
 }))
 
 const fileTypes = {}
@@ -168,8 +185,8 @@ const payload = {
   fileTypes,
   entries: sortedEntries,
   files: files.sort(byTime),
-  links,
-  recent: sortedEntries.slice(0, 10),
+  links: links.sort(byTime),
+  recent: [...sortedEntries, ...files, ...links].sort(byTime).slice(0, 10),
 }
 
 fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true })

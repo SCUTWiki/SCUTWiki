@@ -248,3 +248,13 @@ html[data-theme='light'] .pg-doc code { background: rgba(19, 34, 27, 0.07); }
   border-left: 2px solid var(--hp-green);
   opacity: 0.7;
 }
+
+/* 汇总页的行式布局 */
+.pg-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pg-row b { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; }
+.pg-row-meta { flex: none; font-size: 11px; opacity: 0.45; letter-spacing: 0.5px; }

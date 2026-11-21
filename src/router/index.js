@@ -11,6 +11,8 @@ import TeamContact from '../views/ContactUs/TeamContact.vue'
 import Support from '../views/SupportUs/Support.vue'
 import WikiList from '../views/wiki/WikiList.vue'
 import WikiEntry from '../views/wiki/WikiEntry.vue'
+import FileList from '../views/wiki/FileList.vue'
+import LinkList from '../views/wiki/LinkList.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -25,6 +27,8 @@ const routes = [
   { path: '/support', name: 'support', component: Support },
   { path: '/wiki', name: 'wiki', component: WikiList },
   { path: '/wiki/:slug', name: 'wiki-entry', component: WikiEntry },
+  { path: '/files', name: 'files', component: FileList },
+  { path: '/links', name: 'links', component: LinkList },
 ]
 
 export default createRouter({

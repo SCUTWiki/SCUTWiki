@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T13:10:59.010Z",
+  "generatedAt": "2026-11-21T13:23:57.524Z",
   "counts": {
     "doc": 5,
     "file": 1,
@@ -87,6 +87,8 @@
       "title": "scamsPhoto.png",
       "path": "src/views/More/content/scamsPhoto.png",
       "ext": "png",
+      "size": 431522,
+      "from": "scams",
       "updatedAt": "2026-11-10T22:37:25+08:00"
     }
   ],
@@ -95,8 +97,10 @@
       "type": "link",
       "title": "https://www.scut.edu.cn",
       "url": "https://www.scut.edu.cn",
+      "host": "scut.edu.cn",
       "path": "content:campus",
-      "updatedAt": null
+      "from": "campus",
+      "updatedAt": "2026-11-15T00:00:00.000Z"
     }
   ],
   "recent": [
@@ -114,6 +118,15 @@
       "path": "src/content/college/campus.md",
       "href": "/wiki/campus",
       "html": "<h2>两个校区</h2>\n<p>学校主要有<strong>五山校区</strong>和<strong>大学城校区</strong>。五山校区在市中心，老建筑多；大学城校区在番禺，宿舍和实验室更新。大部分本科生前两年在五山，之后按学院安排。</p>\n<h2>到校方式</h2>\n<ul>\n<li>地铁：3 号线五山站，出站步行约 10 分钟到正门</li>\n<li>公交：华工大站、华工大总站都有线路</li>\n<li>自驾：正门不对外来车辆开放，报到日按指引走侧门</li>\n</ul>\n<h2>校园卡</h2>\n<p>报到时在学院领取，兼作饭卡、门禁和图书证。丢失后先在自助机挂失，再去服务大厅补办，补办费从卡内余额扣。</p>\n"
+    },
+    {
+      "type": "link",
+      "title": "https://www.scut.edu.cn",
+      "url": "https://www.scut.edu.cn",
+      "host": "scut.edu.cn",
+      "path": "content:campus",
+      "from": "campus",
+      "updatedAt": "2026-11-15T00:00:00.000Z"
     },
     {
       "type": "doc",
@@ -170,6 +183,15 @@
       "path": "src/content/more/scams.md",
       "href": "/wiki/scams",
       "html": "<h2>三类高频骗局</h2>\n<ol>\n<li><strong>假新生群</strong>：私下邀请进群，然后私聊推销课程、电话卡</li>\n<li><strong>兼职刷单</strong>：群里发的“轻松日结”基本都是刷单，先让你垫钱</li>\n<li><strong>冒充老师</strong>：邮件或私信通知你“学籍异常”，要你点链接填信息</li>\n</ol>\n<h2>怎么判断</h2>\n<ul>\n<li>学校通知只走教务系统和企业微信，不会用私人邮箱</li>\n<li>任何要你先付款的兼职都要警惕</li>\n<li>拿不准就把邮件原文转给辅导员确认</li>\n</ul>\n<h2>遇到之后</h2>\n<p>保留聊天记录和转账凭证，先联系辅导员，再拨 96110 反诈专线。</p>\n"
+    },
+    {
+      "type": "file",
+      "title": "scamsPhoto.png",
+      "path": "src/views/More/content/scamsPhoto.png",
+      "ext": "png",
+      "size": 431522,
+      "from": "scams",
+      "updatedAt": "2026-11-10T22:37:25+08:00"
     }
   ]
 }

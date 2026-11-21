@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
+import SummaryTabs from '../../components/SummaryTabs.vue'
 import { useContentStats, formatDate } from '../../composables/useContentStats'
 
 const { entries } = useContentStats()
@@ -29,6 +30,8 @@ const groups = computed(() => {
           共 {{ entries.length }} 篇，按更新时间排序。内容都来自仓库里的 Markdown 文件，提交后自动出现在这里。
         </p>
       </header>
+
+      <SummaryTabs />
 
       <section v-for="group in groups" :key="group.section" class="pg-section">
         <h2>{{ group.section }} · {{ group.items.length }}</h2>

@@ -84,10 +84,10 @@ const stats = computed(() => [
   {
     label: '文件汇总',
     count: counts.file,
-    href: '/more',
+    href: '/files',
     sub: fileTypeSummary(fileTypes) || '暂无文件',
   },
-  { label: '链接汇总', count: counts.link, href: '/more' },
+  { label: '链接汇总', count: counts.link, href: '/links' },
 ])
 
 const latest = computed(() => recent.find((item) => item.type === 'doc') || recent[0])
