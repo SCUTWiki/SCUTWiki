@@ -2,6 +2,7 @@
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
+import TeamTabs from '../../components/TeamTabs.vue'
 </script>
 
 <template>
@@ -16,6 +17,8 @@ import Title from '../../components/Title.vue'
           SCUTWiki 一直靠同学用爱发电。如果它帮你少踩过一次坑，下面这些方式都能让它多活一阵。
         </p>
       </header>
+
+      <TeamTabs />
 
       <section class="pg-section">
         <h2>赞助方式</h2>

@@ -165,3 +165,25 @@ html[data-theme='light'] .pg-link:hover { color: #1d7a54; }
   .pg-list li { grid-template-columns: 1fr; gap: 4px; }
   .pg-hero { padding-top: 32px; }
 }
+
+/* 三个团队页面之间的切换 */
+.pg-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; }
+.pg-tab {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 239, 228, 0.2);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+html[data-theme='light'] .pg-tab { border-color: rgba(19, 34, 27, 0.18); }
+.pg-tab:hover { border-color: var(--hp-green); color: var(--hp-green-soft); }
+html[data-theme='light'] .pg-tab:hover { color: #1d7a54; }
+.pg-tab.router-link-active {
+  background: var(--hp-green);
+  border-color: transparent;
+  color: #0f1a15;
+  font-weight: 600;
+}

@@ -2,6 +2,7 @@
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
+import TeamTabs from '../../components/TeamTabs.vue'
 </script>
 
 <template>
@@ -16,6 +17,8 @@ import Title from '../../components/Title.vue'
           SCUTWiki 是一个由学生自发维护的校园知识库：把散落在群聊、通知和口口相传里的信息，整理成随时能查的一页。
         </p>
       </header>
+
+      <TeamTabs />
 
       <section class="pg-section">
         <h2>我们在做什么</h2>

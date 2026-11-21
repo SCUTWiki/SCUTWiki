@@ -2,6 +2,7 @@
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
+import TeamTabs from '../../components/TeamTabs.vue'
 </script>
 
 <template>
@@ -16,6 +17,8 @@ import Title from '../../components/Title.vue'
           投稿、纠错、合作，或者只是想提个建议——都可以从这里找到我们。尽量把信息写具体，回复会快很多。
         </p>
       </header>
+
+      <TeamTabs />
 
       <section class="pg-section">
         <h2>入口</h2>
