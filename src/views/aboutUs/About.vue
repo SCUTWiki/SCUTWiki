@@ -1,5 +1,5 @@
 <script setup>
-import PageLayout from '../components/PageLayout.vue'
+import PageLayout from '../../components/PageLayout.vue'
 </script>
 
 <template>
@@ -54,7 +54,7 @@ import PageLayout from '../components/PageLayout.vue'
       </p>
       <div class="pg-link-row">
         <RouterLink class="pg-link" to="/contact-us">联系我们 / 投稿 →</RouterLink>
-        <a class="pg-link" href="https://github.com/genshiniubi/SCUTWiki" target="_blank" rel="noopener">
+        <a class="pg-link" href="https://github.com/SCUTWiki/SCUTWiki" target="_blank" rel="noopener">
           GitHub 仓库 →
         </a>
       </div>

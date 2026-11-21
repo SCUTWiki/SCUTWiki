@@ -6,9 +6,9 @@ import Club from '../views/Club/Club.vue'
 import Opensource from '../views/OpenSource/Opensource.vue'
 import Contact from '../views/Contact/Contact.vue'
 import More from '../views/More/More.vue'
-import About from '../views/About.vue'
-import TeamContact from '../views/TeamContact.vue'
-import Support from '../views/Support.vue'
+import About from '../views/aboutUs/About.vue'
+import TeamContact from '../views/ContactUs/TeamContact.vue'
+import Support from '../views/SupportUs/Support.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
