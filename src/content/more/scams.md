@@ -6,7 +6,7 @@ updatedAt: 2026-11-11
 summary: 新生群、兼职、冒充老师三类高频骗局，以及遇到时怎么处理。
 links: []
 files:
-  - src/views/More/content/scamsPhoto.png
+  - public/files/scamsPhoto.png
 ---
 
 ## 三类高频骗局

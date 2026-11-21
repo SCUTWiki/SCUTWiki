@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T13:56:35.486Z",
+  "generatedAt": "2026-11-21T14:34:08.990Z",
   "counts": {
     "doc": 5,
     "file": 1,
@@ -14,6 +14,7 @@
       "slug": "campus",
       "title": "校园概览",
       "section": "大学主模块",
+      "module": "college",
       "summary": "五山与大学城两个校区的基本情况、到校方式和校园卡办理。",
       "updatedAt": "2026-11-15T00:00:00.000Z",
       "links": [
@@ -29,6 +30,7 @@
       "slug": "study",
       "title": "选课与绩点",
       "section": "大学主模块",
+      "module": "college",
       "summary": "两轮选课的时间点、抢课顺序，以及绩点和保研的计算方式。",
       "updatedAt": "2026-11-14T00:00:00.000Z",
       "links": [
@@ -44,6 +46,7 @@
       "slug": "life",
       "title": "住宿与食堂",
       "section": "大学主模块",
+      "module": "college",
       "summary": "宿舍分配、水电充值，以及两个校区食堂的大致情况。",
       "updatedAt": "2026-11-13T00:00:00.000Z",
       "links": [],
@@ -57,6 +60,7 @@
       "slug": "second-hand",
       "title": "二手交易",
       "section": "其他模块",
+      "module": "more",
       "summary": "校内二手群、跳蚤市场和实体书店，买卖之前先看这里。",
       "updatedAt": "2026-11-12T00:00:00.000Z",
       "links": [],
@@ -70,11 +74,12 @@
       "slug": "scams",
       "title": "常见诈骗",
       "section": "其他模块",
+      "module": "more",
       "summary": "新生群、兼职、冒充老师三类高频骗局，以及遇到时怎么处理。",
       "updatedAt": "2026-11-11T00:00:00.000Z",
       "links": [],
       "files": [
-        "src/views/More/content/scamsPhoto.png"
+        "public/files/scamsPhoto.png"
       ],
       "path": "src/content/more/scams.md",
       "href": "/wiki/scams",
@@ -85,12 +90,12 @@
     {
       "type": "file",
       "title": "scamsPhoto.png",
-      "path": "src/views/More/content/scamsPhoto.png",
+      "path": "public/files/scamsPhoto.png",
       "ext": "png",
       "size": 431522,
       "from": "scams",
-      "url": "https://github.com/SCUTWiki/SCUTWiki/blob/dev/src/views/More/content/scamsPhoto.png",
-      "updatedAt": "2026-11-10T22:37:25+08:00"
+      "url": "/files/scamsPhoto.png",
+      "updatedAt": "2026-11-10T10:24:55.555Z"
     }
   ],
   "links": [
@@ -110,6 +115,7 @@
       "slug": "campus",
       "title": "校园概览",
       "section": "大学主模块",
+      "module": "college",
       "summary": "五山与大学城两个校区的基本情况、到校方式和校园卡办理。",
       "updatedAt": "2026-11-15T00:00:00.000Z",
       "links": [
@@ -134,6 +140,7 @@
       "slug": "study",
       "title": "选课与绩点",
       "section": "大学主模块",
+      "module": "college",
       "summary": "两轮选课的时间点、抢课顺序，以及绩点和保研的计算方式。",
       "updatedAt": "2026-11-14T00:00:00.000Z",
       "links": [
@@ -149,6 +156,7 @@
       "slug": "life",
       "title": "住宿与食堂",
       "section": "大学主模块",
+      "module": "college",
       "summary": "宿舍分配、水电充值，以及两个校区食堂的大致情况。",
       "updatedAt": "2026-11-13T00:00:00.000Z",
       "links": [],
@@ -162,6 +170,7 @@
       "slug": "second-hand",
       "title": "二手交易",
       "section": "其他模块",
+      "module": "more",
       "summary": "校内二手群、跳蚤市场和实体书店，买卖之前先看这里。",
       "updatedAt": "2026-11-12T00:00:00.000Z",
       "links": [],
@@ -175,11 +184,12 @@
       "slug": "scams",
       "title": "常见诈骗",
       "section": "其他模块",
+      "module": "more",
       "summary": "新生群、兼职、冒充老师三类高频骗局，以及遇到时怎么处理。",
       "updatedAt": "2026-11-11T00:00:00.000Z",
       "links": [],
       "files": [
-        "src/views/More/content/scamsPhoto.png"
+        "public/files/scamsPhoto.png"
       ],
       "path": "src/content/more/scams.md",
       "href": "/wiki/scams",
@@ -188,12 +198,12 @@
     {
       "type": "file",
       "title": "scamsPhoto.png",
-      "path": "src/views/More/content/scamsPhoto.png",
+      "path": "public/files/scamsPhoto.png",
       "ext": "png",
       "size": 431522,
       "from": "scams",
-      "url": "https://github.com/SCUTWiki/SCUTWiki/blob/dev/src/views/More/content/scamsPhoto.png",
-      "updatedAt": "2026-11-10T22:37:25+08:00"
+      "url": "/files/scamsPhoto.png",
+      "updatedAt": "2026-11-10T10:24:55.555Z"
     }
   ]
 }

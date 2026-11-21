@@ -129,6 +129,8 @@ for (const abs of mdFiles) {
     slug,
     title,
     section,
+    // 目录第一段就是模块名：src/content/more/scams.md -> more
+    module: relPath.startsWith('src/content/') ? relPath.split('/')[2] || 'root' : 'root',
     summary: String(data.summary || excerptOf(content)),
     updatedAt,
     links,
