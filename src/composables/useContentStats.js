@@ -2,15 +2,20 @@ import content from '../data/content.json'
 
 /**
  * 站点内容统计（由 scripts/gen-content.mjs 在构建前生成）
+ *
  * counts: { doc, file, link }
+ * entries: Markdown 词条（含渲染后的 html）
  * fileTypes: { png: 2, pdf: 1, ... }
- * recent: 按更新时间倒序的条目
+ * recent: 按更新时间倒序
  */
 export function useContentStats() {
   return {
     counts: content.counts,
     fileTypes: content.fileTypes,
-    recent: content.recent,
+    entries: content.entries || [],
+    files: content.files || [],
+    links: content.links || [],
+    recent: content.recent || [],
     generatedAt: content.generatedAt,
   }
 }
@@ -52,7 +57,7 @@ export function fileTypeSummary(fileTypes) {
     .join(' · ')
 }
 
-const TYPE_TEXT = { doc: '页面', file: '文件', link: '链接' }
+const TYPE_TEXT = { doc: '词条', file: '文件', link: '链接' }
 
 export function typeLabel(type) {
   return TYPE_TEXT[type] || type

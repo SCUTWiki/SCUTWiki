@@ -1,40 +1,47 @@
-﻿/**
- * 扫描仓库内容，生成 src/data/content.json
+/**
+ * 扫描 src/content/** 下的 Markdown 词条，生成 src/data/content.json
  *
- * 统计三类内容：
- *   doc  —— src/views 下的 .vue 页面（文档）
- *   file —— src/ 与 public/ 下的附件（图片、pdf、表格等）
- *   link —— 源码里出现的 http(s) 外链（去重）
+ * 词条元信息全部来自 front-matter：
+ *   title / slug / section / updatedAt / summary / links / files
  *
- * 更新时间取 `git log -1 --format=%cI -- <file>`，
- * 没有 git 记录时退回文件系统 mtime。
+ * 统计口径：
+ *   doc  —— Markdown 词条数量
+ *   file —— front-matter 里 files 引用的文件（去重，且必须真实存在）
+ *   link —— front-matter 里 links 的外链（去重）
  *
- * 用法：node scripts/gen-content.mjs
- * 构建前自动执行（package.json 的 prebuild）。
+ * 更新时间优先用 front-matter 的 updatedAt，缺省时用 git 提交时间，
+ * 再退到文件 mtime。
+ *
+ * 用法：node scripts/gen-content.mjs（npm run build 前自动执行）
  */
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import matter from 'gray-matter'
+import { marked } from 'marked'
 
 const ROOT = process.cwd()
+const CONTENT_DIR = path.join(ROOT, 'src/content')
 const OUT_FILE = path.join(ROOT, 'src/data/content.json')
 
-const FILE_EXT = new Set([
+const BINARY_EXT = new Set([
   'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'ico',
   'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
   'zip', 'rar', '7z', 'md', 'txt', 'csv', 'mp4', 'webm',
 ])
 
-const SKIP_DIRS = new Set(['node_modules', 'dist', '.git', '.vscode'])
-
 function walk(dir, out = []) {
+  if (!fs.existsSync(dir)) return out
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (SKIP_DIRS.has(entry.name)) continue
     const full = path.join(dir, entry.name)
     if (entry.isDirectory()) walk(full, out)
     else out.push(full)
   }
   return out
+}
+
+function rel(p) {
+  return path.relative(ROOT, p).split(path.sep).join('/')
 }
 
 function gitTime(relPath) {
@@ -46,7 +53,7 @@ function gitTime(relPath) {
     }).trim()
     if (out) return out
   } catch {
-    /* 没有 git 或文件未提交，退回 mtime */
+    /* fallthrough */
   }
   try {
     return new Date(fs.statSync(path.join(ROOT, relPath)).mtimeMs).toISOString()
@@ -55,115 +62,114 @@ function gitTime(relPath) {
   }
 }
 
-function readTitle(relPath, fallback) {
-  try {
-    const text = fs.readFileSync(path.join(ROOT, relPath), 'utf8')
-    const m = text.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)
-    if (m) {
-      const title = m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-      if (title) return title
-    }
-  } catch {
-    /* ignore */
+function toISOString(value, fallbackRel) {
+  if (value) {
+    const d = new Date(value)
+    if (!Number.isNaN(d.getTime())) return d.toISOString()
   }
-  return fallback
+  return gitTime(fallbackRel)
 }
 
-/** 从 router 中解析 文件 -> 路由路径 */
-function routeMap() {
-  const routerFile = path.join(ROOT, 'src/router/index.js')
-  if (!fs.existsSync(routerFile)) return {}
-
-  const src = fs.readFileSync(routerFile, 'utf8')
-  const imports = {}
-  for (const m of src.matchAll(/import\s+(\w+)\s+from\s+'([^']+)'/g)) {
-    const abs = path.resolve(path.dirname(routerFile), m[2])
-    imports[m[1]] = path.relative(ROOT, abs).split(path.sep).join('/')
-  }
-
-  const map = {}
-  for (const m of src.matchAll(/path:\s*'([^']+)'[\s\S]{0,80}?component:\s*(\w+)/g)) {
-    const file = imports[m[2]]
-    if (file) map[file] = m[1]
-  }
-  return map
+function firstHeading(md) {
+  const m = md.match(/^#\s+(.+)$/m)
+  return m ? m[1].trim() : null
 }
 
-const routes = routeMap()
-const allFiles = walk(ROOT).map((f) => path.relative(ROOT, f).split(path.sep).join('/'))
+function excerptOf(md, max = 80) {
+  const text = md
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/^#+\s+/gm, '')
+    .replace(/[*_>`~-]/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return text.length > max ? text.slice(0, max) + '…' : text
+}
 
-const docs = []
-const files = []
-const linkSet = new Map()
+const mdFiles = walk(CONTENT_DIR).filter((f) => f.toLowerCase().endsWith('.md'))
+const entries = []
+const fileRefs = new Map()
+const linkRefs = new Map()
 
-for (const rel of allFiles) {
-  const ext = path.extname(rel).slice(1).toLowerCase()
+for (const abs of mdFiles) {
+  const relPath = rel(abs)
+  const raw = fs.readFileSync(abs, 'utf8')
+  const { data, content } = matter(raw)
 
-  if (rel.startsWith('src/views/') && ext === 'vue') {
-    const href = routes[rel] || null
-    if (!href) continue // 只统计有路由的真正页面
-    docs.push({
-      type: 'doc',
-      title: readTitle(rel, path.basename(rel, '.vue')),
-      path: rel,
-      href,
-      updatedAt: gitTime(rel),
-    })
-    continue
-  }
+  const slug = String(data.slug || path.basename(abs, '.md')).trim()
+  const title = String(data.title || firstHeading(content) || slug)
+  const section = String(data.section || '未分类')
+  const updatedAt = toISOString(data.updatedAt, relPath)
 
-  if (FILE_EXT.has(ext) && (rel.startsWith('src/') || rel.startsWith('public/'))) {
-    if (rel === 'public/favicon.ico') continue
-    files.push({
-      type: 'file',
-      title: path.basename(rel),
-      path: rel,
-      ext,
-      updatedAt: gitTime(rel),
-    })
-    continue
-  }
+  const links = [...new Set((Array.isArray(data.links) ? data.links : []).map(String))]
+  const files = [...new Set((Array.isArray(data.files) ? data.files : []).map(String))]
 
-  // 只扫描源码里的外链
-  if (/\.(vue|js|mjs|md)$/.test(rel) && !rel.startsWith('src/data/') && !/\.config\.(js|mjs)$/.test(rel)) {
-    let text = ''
-    try {
-      text = fs.readFileSync(path.join(ROOT, rel), 'utf8')
-    } catch {
+  for (const file of files) {
+    const absFile = path.resolve(ROOT, file)
+    if (!fs.existsSync(absFile)) {
+      console.warn(`[content] 引用的文件不存在，已跳过：${file}（来自 ${relPath}）`)
       continue
     }
-    for (const m of text.matchAll(/https?:\/\/[^\s"'<>)]+/g)) {
-      const url = m[0].replace(/[.,;:]+$/, '')
-      if (url.includes('localhost') || url.includes('127.0.0.1')) continue
-      if (!linkSet.has(url)) {
-        linkSet.set(url, {
-          type: 'link',
-          title: url,
-          url,
-          path: rel,
-          updatedAt: gitTime(rel),
-        })
-      }
-    }
+    if (!fileRefs.has(file)) fileRefs.set(file, { path: file, from: slug })
   }
+
+  for (const url of links) {
+    if (!linkRefs.has(url)) linkRefs.set(url, { url, from: slug })
+  }
+
+  entries.push({
+    type: 'doc',
+    slug,
+    title,
+    section,
+    summary: String(data.summary || excerptOf(content)),
+    updatedAt,
+    links,
+    files,
+    path: relPath,
+    href: `/wiki/${slug}`,
+    html: marked.parse(content, { async: false }),
+  })
 }
 
-const links = [...linkSet.values()]
-const all = [...docs, ...files, ...links]
+// src/content 下直接放着的二进制附件也算文件
+for (const abs of walk(CONTENT_DIR)) {
+  const relPath = rel(abs)
+  const ext = path.extname(relPath).slice(1).toLowerCase()
+  if (!BINARY_EXT.has(ext) || ext === 'md') continue
+  if (!fileRefs.has(relPath)) fileRefs.set(relPath, { path: relPath, from: 'content' })
+}
+
+const files = [...fileRefs.values()].map((item) => ({
+  type: 'file',
+  title: path.basename(item.path),
+  path: item.path,
+  ext: path.extname(item.path).slice(1).toLowerCase(),
+  updatedAt: gitTime(item.path),
+}))
+
+const links = [...linkRefs.values()].map((item) => ({
+  type: 'link',
+  title: item.url,
+  url: item.url,
+  path: `content:${item.from}`,
+  updatedAt: null,
+}))
 
 const fileTypes = {}
 for (const f of files) fileTypes[f.ext] = (fileTypes[f.ext] || 0) + 1
 
 const byTime = (a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || ''))
+const sortedEntries = [...entries].sort(byTime)
 
 const payload = {
   generatedAt: new Date().toISOString(),
-  counts: { doc: docs.length, file: files.length, link: links.length },
+  counts: { doc: entries.length, file: files.length, link: links.length },
   fileTypes,
-  docs: docs.sort(byTime),
+  entries: sortedEntries,
   files: files.sort(byTime),
-  links: links.sort(byTime),
-  recent: all.sort(byTime).slice(0, 10),
+  links,
+  recent: sortedEntries.slice(0, 10),
 }
 
 fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true })

@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    站内信息页（关于 / 联系 / 赞助）通用样式
    与首页共用 --hp-* 变量与纸卡质感
    ============================================================ */
@@ -186,4 +186,65 @@ html[data-theme='light'] .pg-tab:hover { color: #1d7a54; }
   border-color: transparent;
   color: #0f1a15;
   font-weight: 600;
+}
+
+/* 词条列表与正文（Markdown 渲染） */
+.pg-back {
+  display: block;
+  width: fit-content;
+  margin-bottom: 18px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: inherit;
+  opacity: 0.5;
+  text-decoration: none;
+}
+.pg-back:hover { opacity: 1; color: var(--hp-green-soft); }
+.pg-meta { margin-top: 10px; font-size: 11px; opacity: 0.45; letter-spacing: 0.5px; }
+.pg-meta code { font-size: 10px; }
+
+.pg-doc-list { list-style: none; margin: 0; padding: 0; }
+.pg-doc-list li {
+  padding: 16px 0;
+  border-bottom: 1px dashed rgba(242, 239, 228, 0.16);
+}
+html[data-theme='light'] .pg-doc-list li { border-color: rgba(19, 34, 27, 0.14); }
+.pg-doc-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  color: inherit;
+  text-decoration: none;
+}
+.pg-doc-list a b { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; }
+.pg-doc-list a:hover b { color: var(--hp-green-soft); }
+.pg-doc-list a span { flex: none; font-size: 11px; opacity: 0.4; }
+.pg-doc-list p { margin: 6px 0 0; font-size: 12px; line-height: 1.7; opacity: 0.55; }
+
+.pg-doc { max-width: 760px; margin-top: 36px; font-size: 14px; line-height: 1.95; }
+.pg-doc h2 {
+  margin: 34px 0 12px;
+  font-family: var(--hp-serif);
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.pg-doc h3 { margin: 24px 0 10px; font-size: 16px; }
+.pg-doc p { margin: 12px 0; opacity: 0.82; }
+.pg-doc ul, .pg-doc ol { margin: 12px 0; padding-left: 22px; opacity: 0.82; }
+.pg-doc li { margin: 6px 0; }
+.pg-doc a { color: var(--hp-green); text-decoration: none; border-bottom: 1px solid rgba(67, 181, 129, 0.4); }
+.pg-doc strong { font-weight: 600; }
+.pg-doc code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(242, 239, 228, 0.08);
+  font-size: 12px;
+}
+html[data-theme='light'] .pg-doc code { background: rgba(19, 34, 27, 0.07); }
+.pg-doc blockquote {
+  margin: 14px 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--hp-green);
+  opacity: 0.7;
 }

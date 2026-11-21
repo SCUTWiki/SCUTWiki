@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.2.1",
     "vite": "^8.2.2",
     "vite-plugin-vue-devtools": "^8.2.1"
   },

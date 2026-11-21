@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { computed } from 'vue'
 
 import Title from '../components/Title.vue'
@@ -80,7 +80,7 @@ const quickLinks = [
 const { counts, fileTypes, recent } = useContentStats()
 
 const stats = computed(() => [
-  { label: '文章汇总', count: counts.doc, href: '/more' },
+  { label: '文章汇总', count: counts.doc, href: '/wiki' },
   {
     label: '文件汇总',
     count: counts.file,

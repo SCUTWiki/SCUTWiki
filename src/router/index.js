@@ -9,6 +9,8 @@ import More from '../views/More/More.vue'
 import About from '../views/aboutUs/About.vue'
 import TeamContact from '../views/ContactUs/TeamContact.vue'
 import Support from '../views/SupportUs/Support.vue'
+import WikiList from '../views/wiki/WikiList.vue'
+import WikiEntry from '../views/wiki/WikiEntry.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -21,6 +23,8 @@ const routes = [
   { path: '/about', name: 'about', component: About },
   { path: '/contact-us', name: 'team-contact', component: TeamContact },
   { path: '/support', name: 'support', component: Support },
+  { path: '/wiki', name: 'wiki', component: WikiList },
+  { path: '/wiki/:slug', name: 'wiki-entry', component: WikiEntry },
 ]
 
 export default createRouter({

@@ -1,84 +1,84 @@
 {
-  "generatedAt": "2026-11-21T09:05:54.916Z",
+  "generatedAt": "2026-11-21T13:10:59.010Z",
   "counts": {
-    "doc": 10,
-    "file": 2,
+    "doc": 5,
+    "file": 1,
     "link": 1
   },
   "fileTypes": {
-    "svg": 1,
     "png": 1
   },
-  "docs": [
+  "entries": [
     {
       "type": "doc",
-      "title": "关于 SCUTWiki",
-      "path": "src/views/aboutUs/About.vue",
-      "href": "/about",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
+      "slug": "campus",
+      "title": "校园概览",
+      "section": "大学主模块",
+      "summary": "五山与大学城两个校区的基本情况、到校方式和校园卡办理。",
+      "updatedAt": "2026-11-15T00:00:00.000Z",
+      "links": [
+        "https://www.scut.edu.cn"
+      ],
+      "files": [],
+      "path": "src/content/college/campus.md",
+      "href": "/wiki/campus",
+      "html": "<h2>两个校区</h2>\n<p>学校主要有<strong>五山校区</strong>和<strong>大学城校区</strong>。五山校区在市中心，老建筑多；大学城校区在番禺，宿舍和实验室更新。大部分本科生前两年在五山，之后按学院安排。</p>\n<h2>到校方式</h2>\n<ul>\n<li>地铁：3 号线五山站，出站步行约 10 分钟到正门</li>\n<li>公交：华工大站、华工大总站都有线路</li>\n<li>自驾：正门不对外来车辆开放，报到日按指引走侧门</li>\n</ul>\n<h2>校园卡</h2>\n<p>报到时在学院领取，兼作饭卡、门禁和图书证。丢失后先在自助机挂失，再去服务大厅补办，补办费从卡内余额扣。</p>\n"
     },
     {
       "type": "doc",
-      "title": "联系我们 / 投稿",
-      "path": "src/views/ContactUs/TeamContact.vue",
-      "href": "/contact-us",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
+      "slug": "study",
+      "title": "选课与绩点",
+      "section": "大学主模块",
+      "summary": "两轮选课的时间点、抢课顺序，以及绩点和保研的计算方式。",
+      "updatedAt": "2026-11-14T00:00:00.000Z",
+      "links": [
+        "https://www.scut.edu.cn"
+      ],
+      "files": [],
+      "path": "src/content/college/study.md",
+      "href": "/wiki/study",
+      "html": "<h2>选课节奏</h2>\n<p>选课分两轮：</p>\n<ol>\n<li><strong>第一轮预选</strong>：只看意愿，不看手速，但热门课要早点提交</li>\n<li><strong>第二轮补选</strong>：先到先得，退课名额也在这一轮放出</li>\n</ol>\n<p>体育课和通识课竞争最激烈，第一轮就要填。专业课优先，别为了给分好漏掉必修。</p>\n<h2>绩点</h2>\n<p>学校按学分加权计算绩点，不同学院换算方式略有差异。保研看前三年加权排名，所以大一的公共课不能放松。</p>\n<h2>考试</h2>\n<p>期末周前两周公布考场，缓考要提前申请并附证明。成绩一般在考后两周内录完，全部录完才能申请复核。</p>\n"
     },
     {
       "type": "doc",
-      "title": "支持 / 赞助我们",
-      "path": "src/views/SupportUs/Support.vue",
-      "href": "/support",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
+      "slug": "life",
+      "title": "住宿与食堂",
+      "section": "大学主模块",
+      "summary": "宿舍分配、水电充值，以及两个校区食堂的大致情况。",
+      "updatedAt": "2026-11-13T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/college/life.md",
+      "href": "/wiki/life",
+      "html": "<h2>宿舍</h2>\n<p>宿舍按学院分配，同专业尽量住在一起。四人间为主，部分楼栋有独立卫浴。电费按宿舍充值，空调另计。</p>\n<h2>食堂</h2>\n<ul>\n<li>五山：东区、西区、北区三个食堂，东区选择最多</li>\n<li>大学城：一饭、二饭，二饭的夜宵开到比较晚</li>\n</ul>\n<p>校园卡和微信都能付，高峰期建议错峰。</p>\n<h2>快递与外卖</h2>\n<p>快递点在宿舍区附近，凭取件码自取。外卖一般送到校门口或宿舍楼下，具体看楼栋规定。</p>\n"
     },
     {
       "type": "doc",
-      "title": "Home",
-      "path": "src/views/Home.vue",
-      "href": "/",
-      "updatedAt": "2026-11-20T23:08:20+08:00"
+      "slug": "second-hand",
+      "title": "二手交易",
+      "section": "其他模块",
+      "summary": "校内二手群、跳蚤市场和实体书店，买卖之前先看这里。",
+      "updatedAt": "2026-11-12T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/second-hand.md",
+      "href": "/wiki/second-hand",
+      "html": "<h2>群与市场</h2>\n<ul>\n<li>华工黑市群：日常用品、教材、代购、买卖网都能发</li>\n<li>大学城宿舍楼 C10 旧物交易群：以宿舍区内部流转为主</li>\n<li>实体二手书店：穗石的爱风书店，价格一般但找书方便</li>\n</ul>\n<h2>交易提醒</h2>\n<ol>\n<li>尽量校内当面交易，先验货再付款</li>\n<li>大额交易走平台担保，不要直接转账</li>\n<li>电子设备记得当面测试，保留聊天记录</li>\n</ol>\n"
     },
     {
       "type": "doc",
-      "title": "联系模块",
-      "path": "src/views/Contact/Contact.vue",
-      "href": "/contact",
-      "updatedAt": "2026-11-15T17:39:06+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "WikiHome",
-      "path": "src/views/College/WikiHome.vue",
-      "href": "/college",
-      "updatedAt": "2026-11-15T12:54:34+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "开源社区",
-      "path": "src/views/OpenSource/Opensource.vue",
-      "href": "/opensource",
-      "updatedAt": "2026-11-15T12:25:12+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "学院 Directory",
-      "path": "src/views/Faculty/Faculty.vue",
-      "href": "/faculty",
-      "updatedAt": "2026-11-14T00:16:18+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "Club",
-      "path": "src/views/Club/Club.vue",
-      "href": "/club",
-      "updatedAt": "2026-11-13T21:16:04+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "其他模块",
-      "path": "src/views/More/More.vue",
-      "href": "/more",
-      "updatedAt": "2026-11-12T06:48:15+08:00"
+      "slug": "scams",
+      "title": "常见诈骗",
+      "section": "其他模块",
+      "summary": "新生群、兼职、冒充老师三类高频骗局，以及遇到时怎么处理。",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "links": [],
+      "files": [
+        "src/views/More/content/scamsPhoto.png"
+      ],
+      "path": "src/content/more/scams.md",
+      "href": "/wiki/scams",
+      "html": "<h2>三类高频骗局</h2>\n<ol>\n<li><strong>假新生群</strong>：私下邀请进群，然后私聊推销课程、电话卡</li>\n<li><strong>兼职刷单</strong>：群里发的“轻松日结”基本都是刷单，先让你垫钱</li>\n<li><strong>冒充老师</strong>：邮件或私信通知你“学籍异常”，要你点链接填信息</li>\n</ol>\n<h2>怎么判断</h2>\n<ul>\n<li>学校通知只走教务系统和企业微信，不会用私人邮箱</li>\n<li>任何要你先付款的兼职都要警惕</li>\n<li>拿不准就把邮件原文转给辅导员确认</li>\n</ul>\n<h2>遇到之后</h2>\n<p>保留聊天记录和转账凭证，先联系辅导员，再拨 96110 反诈专线。</p>\n"
     }
   ],
   "files": [
@@ -88,94 +88,88 @@
       "path": "src/views/More/content/scamsPhoto.png",
       "ext": "png",
       "updatedAt": "2026-11-10T22:37:25+08:00"
-    },
-    {
-      "type": "file",
-      "title": "logo.svg",
-      "path": "src/assets/logo.svg",
-      "ext": "svg",
-      "updatedAt": "2026-11-08T19:23:39+08:00"
     }
   ],
   "links": [
     {
       "type": "link",
-      "title": "https://github.com/SCUTWiki/SCUTWiki",
-      "url": "https://github.com/SCUTWiki/SCUTWiki",
-      "path": "src/components/Title.vue",
-      "updatedAt": "2026-11-21T11:43:53+08:00"
+      "title": "https://www.scut.edu.cn",
+      "url": "https://www.scut.edu.cn",
+      "path": "content:campus",
+      "updatedAt": null
     }
   ],
   "recent": [
     {
       "type": "doc",
-      "title": "关于 SCUTWiki",
-      "path": "src/views/aboutUs/About.vue",
-      "href": "/about",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
+      "slug": "campus",
+      "title": "校园概览",
+      "section": "大学主模块",
+      "summary": "五山与大学城两个校区的基本情况、到校方式和校园卡办理。",
+      "updatedAt": "2026-11-15T00:00:00.000Z",
+      "links": [
+        "https://www.scut.edu.cn"
+      ],
+      "files": [],
+      "path": "src/content/college/campus.md",
+      "href": "/wiki/campus",
+      "html": "<h2>两个校区</h2>\n<p>学校主要有<strong>五山校区</strong>和<strong>大学城校区</strong>。五山校区在市中心，老建筑多；大学城校区在番禺，宿舍和实验室更新。大部分本科生前两年在五山，之后按学院安排。</p>\n<h2>到校方式</h2>\n<ul>\n<li>地铁：3 号线五山站，出站步行约 10 分钟到正门</li>\n<li>公交：华工大站、华工大总站都有线路</li>\n<li>自驾：正门不对外来车辆开放，报到日按指引走侧门</li>\n</ul>\n<h2>校园卡</h2>\n<p>报到时在学院领取，兼作饭卡、门禁和图书证。丢失后先在自助机挂失，再去服务大厅补办，补办费从卡内余额扣。</p>\n"
     },
     {
       "type": "doc",
-      "title": "联系我们 / 投稿",
-      "path": "src/views/ContactUs/TeamContact.vue",
-      "href": "/contact-us",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
+      "slug": "study",
+      "title": "选课与绩点",
+      "section": "大学主模块",
+      "summary": "两轮选课的时间点、抢课顺序，以及绩点和保研的计算方式。",
+      "updatedAt": "2026-11-14T00:00:00.000Z",
+      "links": [
+        "https://www.scut.edu.cn"
+      ],
+      "files": [],
+      "path": "src/content/college/study.md",
+      "href": "/wiki/study",
+      "html": "<h2>选课节奏</h2>\n<p>选课分两轮：</p>\n<ol>\n<li><strong>第一轮预选</strong>：只看意愿，不看手速，但热门课要早点提交</li>\n<li><strong>第二轮补选</strong>：先到先得，退课名额也在这一轮放出</li>\n</ol>\n<p>体育课和通识课竞争最激烈，第一轮就要填。专业课优先，别为了给分好漏掉必修。</p>\n<h2>绩点</h2>\n<p>学校按学分加权计算绩点，不同学院换算方式略有差异。保研看前三年加权排名，所以大一的公共课不能放松。</p>\n<h2>考试</h2>\n<p>期末周前两周公布考场，缓考要提前申请并附证明。成绩一般在考后两周内录完，全部录完才能申请复核。</p>\n"
     },
     {
       "type": "doc",
-      "title": "支持 / 赞助我们",
-      "path": "src/views/SupportUs/Support.vue",
-      "href": "/support",
-      "updatedAt": "2026-11-21T12:06:37+08:00"
-    },
-    {
-      "type": "link",
-      "title": "https://github.com/SCUTWiki/SCUTWiki",
-      "url": "https://github.com/SCUTWiki/SCUTWiki",
-      "path": "src/components/Title.vue",
-      "updatedAt": "2026-11-21T11:43:53+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "Home",
-      "path": "src/views/Home.vue",
-      "href": "/",
-      "updatedAt": "2026-11-20T23:08:20+08:00"
+      "slug": "life",
+      "title": "住宿与食堂",
+      "section": "大学主模块",
+      "summary": "宿舍分配、水电充值，以及两个校区食堂的大致情况。",
+      "updatedAt": "2026-11-13T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/college/life.md",
+      "href": "/wiki/life",
+      "html": "<h2>宿舍</h2>\n<p>宿舍按学院分配，同专业尽量住在一起。四人间为主，部分楼栋有独立卫浴。电费按宿舍充值，空调另计。</p>\n<h2>食堂</h2>\n<ul>\n<li>五山：东区、西区、北区三个食堂，东区选择最多</li>\n<li>大学城：一饭、二饭，二饭的夜宵开到比较晚</li>\n</ul>\n<p>校园卡和微信都能付，高峰期建议错峰。</p>\n<h2>快递与外卖</h2>\n<p>快递点在宿舍区附近，凭取件码自取。外卖一般送到校门口或宿舍楼下，具体看楼栋规定。</p>\n"
     },
     {
       "type": "doc",
-      "title": "联系模块",
-      "path": "src/views/Contact/Contact.vue",
-      "href": "/contact",
-      "updatedAt": "2026-11-15T17:39:06+08:00"
+      "slug": "second-hand",
+      "title": "二手交易",
+      "section": "其他模块",
+      "summary": "校内二手群、跳蚤市场和实体书店，买卖之前先看这里。",
+      "updatedAt": "2026-11-12T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/second-hand.md",
+      "href": "/wiki/second-hand",
+      "html": "<h2>群与市场</h2>\n<ul>\n<li>华工黑市群：日常用品、教材、代购、买卖网都能发</li>\n<li>大学城宿舍楼 C10 旧物交易群：以宿舍区内部流转为主</li>\n<li>实体二手书店：穗石的爱风书店，价格一般但找书方便</li>\n</ul>\n<h2>交易提醒</h2>\n<ol>\n<li>尽量校内当面交易，先验货再付款</li>\n<li>大额交易走平台担保，不要直接转账</li>\n<li>电子设备记得当面测试，保留聊天记录</li>\n</ol>\n"
     },
     {
       "type": "doc",
-      "title": "WikiHome",
-      "path": "src/views/College/WikiHome.vue",
-      "href": "/college",
-      "updatedAt": "2026-11-15T12:54:34+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "开源社区",
-      "path": "src/views/OpenSource/Opensource.vue",
-      "href": "/opensource",
-      "updatedAt": "2026-11-15T12:25:12+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "学院 Directory",
-      "path": "src/views/Faculty/Faculty.vue",
-      "href": "/faculty",
-      "updatedAt": "2026-11-14T00:16:18+08:00"
-    },
-    {
-      "type": "doc",
-      "title": "Club",
-      "path": "src/views/Club/Club.vue",
-      "href": "/club",
-      "updatedAt": "2026-11-13T21:16:04+08:00"
+      "slug": "scams",
+      "title": "常见诈骗",
+      "section": "其他模块",
+      "summary": "新生群、兼职、冒充老师三类高频骗局，以及遇到时怎么处理。",
+      "updatedAt": "2026-11-11T00:00:00.000Z",
+      "links": [],
+      "files": [
+        "src/views/More/content/scamsPhoto.png"
+      ],
+      "path": "src/content/more/scams.md",
+      "href": "/wiki/scams",
+      "html": "<h2>三类高频骗局</h2>\n<ol>\n<li><strong>假新生群</strong>：私下邀请进群，然后私聊推销课程、电话卡</li>\n<li><strong>兼职刷单</strong>：群里发的“轻松日结”基本都是刷单，先让你垫钱</li>\n<li><strong>冒充老师</strong>：邮件或私信通知你“学籍异常”，要你点链接填信息</li>\n</ol>\n<h2>怎么判断</h2>\n<ul>\n<li>学校通知只走教务系统和企业微信，不会用私人邮箱</li>\n<li>任何要你先付款的兼职都要警惕</li>\n<li>拿不准就把邮件原文转给辅导员确认</li>\n</ul>\n<h2>遇到之后</h2>\n<p>保留聊天记录和转账凭证，先联系辅导员，再拨 96110 反诈专线。</p>\n"
     }
   ]
 }
