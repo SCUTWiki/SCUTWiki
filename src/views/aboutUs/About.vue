@@ -3,6 +3,9 @@ import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
 import TeamTabs from '../../components/TeamTabs.vue'
+import { useContentStats } from '../../composables/useContentStats'
+
+const { counts } = useContentStats()
 </script>
 
 <template>
@@ -44,9 +47,9 @@ import TeamTabs from '../../components/TeamTabs.vue'
       <section class="pg-section">
         <h2>现在的规模</h2>
         <div class="pg-stats">
-          <div class="pg-stat"><b>128</b><span>篇词条</span></div>
-          <div class="pg-stat"><b>46</b><span>个文件</span></div>
-          <div class="pg-stat"><b>87</b><span>条外链</span></div>
+          <div class="pg-stat"><b>{{ counts.doc }}</b><span>个页面</span></div>
+          <div class="pg-stat"><b>{{ counts.file }}</b><span>个文件</span></div>
+          <div class="pg-stat"><b>{{ counts.link }}</b><span>条外链</span></div>
         </div>
       </section>
 

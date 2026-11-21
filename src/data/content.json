@@ -1,0 +1,181 @@
+{
+  "generatedAt": "2026-11-21T09:05:54.916Z",
+  "counts": {
+    "doc": 10,
+    "file": 2,
+    "link": 1
+  },
+  "fileTypes": {
+    "svg": 1,
+    "png": 1
+  },
+  "docs": [
+    {
+      "type": "doc",
+      "title": "关于 SCUTWiki",
+      "path": "src/views/aboutUs/About.vue",
+      "href": "/about",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "联系我们 / 投稿",
+      "path": "src/views/ContactUs/TeamContact.vue",
+      "href": "/contact-us",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "支持 / 赞助我们",
+      "path": "src/views/SupportUs/Support.vue",
+      "href": "/support",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "Home",
+      "path": "src/views/Home.vue",
+      "href": "/",
+      "updatedAt": "2026-11-20T23:08:20+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "联系模块",
+      "path": "src/views/Contact/Contact.vue",
+      "href": "/contact",
+      "updatedAt": "2026-11-15T17:39:06+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "WikiHome",
+      "path": "src/views/College/WikiHome.vue",
+      "href": "/college",
+      "updatedAt": "2026-11-15T12:54:34+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "开源社区",
+      "path": "src/views/OpenSource/Opensource.vue",
+      "href": "/opensource",
+      "updatedAt": "2026-11-15T12:25:12+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "学院 Directory",
+      "path": "src/views/Faculty/Faculty.vue",
+      "href": "/faculty",
+      "updatedAt": "2026-11-14T00:16:18+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "Club",
+      "path": "src/views/Club/Club.vue",
+      "href": "/club",
+      "updatedAt": "2026-11-13T21:16:04+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "其他模块",
+      "path": "src/views/More/More.vue",
+      "href": "/more",
+      "updatedAt": "2026-11-12T06:48:15+08:00"
+    }
+  ],
+  "files": [
+    {
+      "type": "file",
+      "title": "scamsPhoto.png",
+      "path": "src/views/More/content/scamsPhoto.png",
+      "ext": "png",
+      "updatedAt": "2026-11-10T22:37:25+08:00"
+    },
+    {
+      "type": "file",
+      "title": "logo.svg",
+      "path": "src/assets/logo.svg",
+      "ext": "svg",
+      "updatedAt": "2026-11-08T19:23:39+08:00"
+    }
+  ],
+  "links": [
+    {
+      "type": "link",
+      "title": "https://github.com/SCUTWiki/SCUTWiki",
+      "url": "https://github.com/SCUTWiki/SCUTWiki",
+      "path": "src/components/Title.vue",
+      "updatedAt": "2026-11-21T11:43:53+08:00"
+    }
+  ],
+  "recent": [
+    {
+      "type": "doc",
+      "title": "关于 SCUTWiki",
+      "path": "src/views/aboutUs/About.vue",
+      "href": "/about",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "联系我们 / 投稿",
+      "path": "src/views/ContactUs/TeamContact.vue",
+      "href": "/contact-us",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "支持 / 赞助我们",
+      "path": "src/views/SupportUs/Support.vue",
+      "href": "/support",
+      "updatedAt": "2026-11-21T12:06:37+08:00"
+    },
+    {
+      "type": "link",
+      "title": "https://github.com/SCUTWiki/SCUTWiki",
+      "url": "https://github.com/SCUTWiki/SCUTWiki",
+      "path": "src/components/Title.vue",
+      "updatedAt": "2026-11-21T11:43:53+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "Home",
+      "path": "src/views/Home.vue",
+      "href": "/",
+      "updatedAt": "2026-11-20T23:08:20+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "联系模块",
+      "path": "src/views/Contact/Contact.vue",
+      "href": "/contact",
+      "updatedAt": "2026-11-15T17:39:06+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "WikiHome",
+      "path": "src/views/College/WikiHome.vue",
+      "href": "/college",
+      "updatedAt": "2026-11-15T12:54:34+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "开源社区",
+      "path": "src/views/OpenSource/Opensource.vue",
+      "href": "/opensource",
+      "updatedAt": "2026-11-15T12:25:12+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "学院 Directory",
+      "path": "src/views/Faculty/Faculty.vue",
+      "href": "/faculty",
+      "updatedAt": "2026-11-14T00:16:18+08:00"
+    },
+    {
+      "type": "doc",
+      "title": "Club",
+      "path": "src/views/Club/Club.vue",
+      "href": "/club",
+      "updatedAt": "2026-11-13T21:16:04+08:00"
+    }
+  ]
+}
