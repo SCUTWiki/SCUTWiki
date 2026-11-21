@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T13:23:57.524Z",
+  "generatedAt": "2026-11-21T13:56:35.486Z",
   "counts": {
     "doc": 5,
     "file": 1,
@@ -89,6 +89,7 @@
       "ext": "png",
       "size": 431522,
       "from": "scams",
+      "url": "https://github.com/SCUTWiki/SCUTWiki/blob/dev/src/views/More/content/scamsPhoto.png",
       "updatedAt": "2026-11-10T22:37:25+08:00"
     }
   ],
@@ -191,6 +192,7 @@
       "ext": "png",
       "size": 431522,
       "from": "scams",
+      "url": "https://github.com/SCUTWiki/SCUTWiki/blob/dev/src/views/More/content/scamsPhoto.png",
       "updatedAt": "2026-11-10T22:37:25+08:00"
     }
   ]

@@ -147,6 +147,17 @@ for (const abs of walk(CONTENT_DIR)) {
   if (!fileRefs.has(relPath)) fileRefs.set(relPath, { path: relPath, from: 'content', updatedAt: null })
 }
 
+// 文件的可打开地址：
+//   public/xxx      -> /xxx（站点直接访问）
+//   其他仓库路径    -> GitHub 页面（图片/PDF 可直接预览，也能下载）
+const REPO_URL = process.env.CONTENT_REPO || 'https://github.com/SCUTWiki/SCUTWiki'
+const REPO_BRANCH = process.env.CONTENT_BRANCH || 'dev'
+
+function fileUrl(p) {
+  if (p.startsWith('public/')) return '/' + p.slice('public/'.length)
+  return `${REPO_URL}/blob/${REPO_BRANCH}/${p}`
+}
+
 const files = [...fileRefs.values()].map((item) => ({
   type: 'file',
   title: path.basename(item.path),
@@ -154,6 +165,7 @@ const files = [...fileRefs.values()].map((item) => ({
   ext: path.extname(item.path).slice(1).toLowerCase(),
   size: fs.existsSync(path.join(ROOT, item.path)) ? fs.statSync(path.join(ROOT, item.path)).size : 0,
   from: item.from,
+  url: fileUrl(item.path),
   updatedAt: gitTime(item.path) || item.updatedAt || null,
 }))
 
