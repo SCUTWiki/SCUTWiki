@@ -96,6 +96,11 @@ for (const abs of mdFiles) {
   const raw = fs.readFileSync(abs, 'utf8')
   const { data, content } = matter(raw)
 
+  // 没有用 --- 包起来的 front-matter 时，整段会被当成正文，这里提醒一下
+  if (!raw.trimStart().startsWith('---')) {
+    console.warn(`[content] 缺少 front-matter（应以 --- 开头）：${relPath}`)
+  }
+
   const slug = String(data.slug || path.basename(abs, '.md')).trim()
   const title = String(data.title || firstHeading(content) || slug)
   const section = String(data.section || '未分类')

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-22T00:22:52.360Z",
+  "generatedAt": "2026-11-22T01:47:05.488Z",
   "counts": {
-    "doc": 2,
+    "doc": 3,
     "file": 1,
     "link": 0
   },
@@ -9,6 +9,20 @@
     "png": 1
   },
   "entries": [
+    {
+      "type": "doc",
+      "slug": "about",
+      "title": "关于",
+      "section": "其他模块",
+      "module": "more",
+      "summary": "测试词条。",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/about.md",
+      "href": "/wiki/about",
+      "html": "<h1>Hello</h1>\n<p>yes test</p>\n"
+    },
     {
       "type": "doc",
       "slug": "colleges",
@@ -54,6 +68,20 @@
   ],
   "links": [],
   "recent": [
+    {
+      "type": "doc",
+      "slug": "about",
+      "title": "关于",
+      "section": "其他模块",
+      "module": "more",
+      "summary": "测试词条。",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/about.md",
+      "href": "/wiki/about",
+      "html": "<h1>Hello</h1>\n<p>yes test</p>\n"
+    },
     {
       "type": "file",
       "title": "scamsPhoto.png",
