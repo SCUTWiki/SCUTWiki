@@ -4,8 +4,8 @@ import { useRoute } from 'vue-router'
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
-import WikiLayout from '../../components/WikiLayout.vue'
-import { useContentStats, formatDate } from '../../composables/useContentStats'
+import EntryList from '../../components/entries/EntryList.vue'
+import { useContentStats } from '../../composables/useContentStats'
 
 const route = useRoute()
 const { entries } = useContentStats()
@@ -19,7 +19,7 @@ const submodules = [
 
 const moreEntries = computed(() => entries.filter((entry) => entry.module === 'more'))
 
-// 目录里出现、但没在上面登记过的新板块，自动补一张卡片
+// 目录里出现、但没在上面登记过的新板块，自动补一项
 const discovered = computed(() => {
   const known = new Set(submodules.map((item) => item.key))
   const keys = [...new Set(moreEntries.value.map((entry) => entry.submodule).filter(Boolean))]
@@ -31,7 +31,7 @@ const allSubmodules = computed(() => [...submodules, ...discovered.value])
 const currentKey = computed(() => route.params.sub || null)
 const current = computed(() => allSubmodules.value.find((item) => item.key === currentKey.value))
 
-const cards = computed(() =>
+const sideItems = computed(() =>
   allSubmodules.value.map((item) => ({
     ...item,
     count: moreEntries.value.filter((entry) => entry.submodule === item.key).length,
@@ -43,8 +43,6 @@ const list = computed(() =>
     .filter((entry) => entry.submodule === currentKey.value)
     .sort((a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || ''))),
 )
-
-const navItems = computed(() => list.value.map((entry) => ({ id: entry.slug, label: entry.title })))
 </script>
 
 <template>
@@ -56,21 +54,21 @@ const navItems = computed(() => list.value.map((entry) => ({ id: entry.slug, lab
       <header class="pg-hero">
         <span class="pg-eyebrow">MORE / 其他模块</span>
         <h1>其他模块</h1>
-        <p class="pg-lead">杂文、群分享、兴趣爱好、箴言等等。先选一个板块，进去后左侧会出现该板块的目录。</p>
+        <p class="pg-lead">杂文、群分享、兴趣爱好、箴言等等。先选一个板块，进去后左侧可以随时切换板块。</p>
       </header>
 
       <section class="pg-section">
         <h2>板块</h2>
         <div class="pg-grid three">
           <RouterLink
-            v-for="card in cards"
-            :key="card.key"
+            v-for="item in sideItems"
+            :key="item.key"
             class="pg-card more-card"
-            :to="`/more/${card.key}`"
+            :to="`/more/${item.key}`"
           >
-            <span class="pg-tag">{{ card.count }} 篇</span>
-            <h3>{{ card.label }}</h3>
-            <p>{{ card.desc }}</p>
+            <span class="pg-tag">{{ item.count }} 篇</span>
+            <h3>{{ item.label }}</h3>
+            <p>{{ item.desc }}</p>
             <span class="more-card-go">进入 →</span>
           </RouterLink>
         </div>
@@ -78,26 +76,37 @@ const navItems = computed(() => list.value.map((entry) => ({ id: entry.slug, lab
     </div>
   </main>
 
-  <!-- 第二层：某个板块，左侧导航 + 右侧正文 -->
+  <!-- 第二层：左侧分模块切换 + 右侧文章列表 -->
   <main v-else class="pg">
     <div class="pg-wrap">
-      <RouterLink class="pg-back" to="/more">← 全部板块</RouterLink>
+      <div class="more-shell">
+        <aside class="more-side" aria-label="分模块">
+          <RouterLink class="more-side-back" to="/more">← 全部板块</RouterLink>
+          <RouterLink
+            v-for="item in sideItems"
+            :key="item.key"
+            class="more-side-item"
+            :class="{ active: item.key === currentKey }"
+            :to="`/more/${item.key}`"
+          >
+            <span>{{ item.label }}</span>
+            <em>{{ item.count }}</em>
+          </RouterLink>
+        </aside>
 
-      <header class="pg-hero">
-        <span class="pg-eyebrow">MORE / {{ current?.label || currentKey }}</span>
-        <h1>{{ current?.label || currentKey }}</h1>
-        <p class="pg-lead">{{ current?.desc }}</p>
-      </header>
+        <div class="more-main">
+          <header class="pg-hero">
+            <span class="pg-eyebrow">MORE / {{ current?.label || currentKey }}</span>
+            <h1>{{ current?.label || currentKey }}</h1>
+            <p class="pg-lead">{{ current?.desc }}</p>
+          </header>
 
-      <WikiLayout v-if="list.length" :items="navItems" :single="true">
-        <section v-for="entry in list" :key="entry.slug" :id="entry.slug" mode="switch">
-          <h2>{{ entry.title }}</h2>
-          <p class="pg-meta">更新于 {{ formatDate(entry.updatedAt) }}</p>
-          <article class="pg-doc" v-html="entry.html" />
-        </section>
-      </WikiLayout>
-
-      <p v-else class="pg-note">这个板块还没有词条，往 src/content/more/{{ currentKey }}/ 里加 .md 即可。</p>
+          <section class="pg-section">
+            <h2 v-if="list.length">相关文章 · {{ list.length }}</h2>
+            <EntryList :entries="list" empty-text="这个板块还没有文章。" />
+          </section>
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -130,5 +139,84 @@ const navItems = computed(() => list.value.map((entry) => ({ id: entry.slug, lab
   font-size: 11px;
   letter-spacing: 1px;
   color: #1d5b45;
+}
+
+.more-shell {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.more-side {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 16px 18px 0;
+  border-right: 1px solid rgba(242, 239, 228, 0.12);
+}
+html[data-theme='light'] .more-side {
+  border-color: rgba(19, 34, 27, 0.12);
+}
+.more-side-back {
+  margin-bottom: 14px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: inherit;
+  opacity: 0.5;
+  text-decoration: none;
+}
+.more-side-back:hover,
+.more-side-item:hover {
+  color: var(--hp-green-soft);
+}
+.more-side-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-left: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.more-side-item em {
+  font-style: normal;
+  font-size: 11px;
+  opacity: 0.45;
+}
+.more-side-item.active {
+  background: rgba(242, 239, 228, 0.06);
+  border-left-color: var(--hp-green);
+  color: var(--hp-green-soft);
+  opacity: 1;
+}
+.more-main {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .more-shell {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .more-side {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 0 12px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(242, 239, 228, 0.12);
+  }
+  .more-side-back {
+    width: 100%;
+    margin-bottom: 4px;
+  }
 }
 </style>
