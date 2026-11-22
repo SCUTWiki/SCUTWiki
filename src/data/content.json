@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T11:47:02.203Z",
+  "generatedAt": "2026-11-22T11:58:48.408Z",
   "counts": {
     "doc": 5,
     "file": 1,
@@ -15,14 +15,14 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "submodule": "misc",
-      "summary": "nihaoya",
+      "submodule": "maxims",
+      "summary": "ceshi",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
-      "path": "src/content/more/misc/about.md",
+      "path": "src/content/more/maxims/about.md",
       "href": "/wiki/about",
-      "html": "<h1>关于</h1>\n<p>hello</p>\n"
+      "html": "<h1>test</h1>\n<p>nihaoya</p>\n"
     },
     {
       "type": "doc",
@@ -129,14 +129,14 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "submodule": "misc",
-      "summary": "nihaoya",
+      "submodule": "maxims",
+      "summary": "ceshi",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
-      "path": "src/content/more/misc/about.md",
+      "path": "src/content/more/maxims/about.md",
       "href": "/wiki/about",
-      "html": "<h1>关于</h1>\n<p>hello</p>\n"
+      "html": "<h1>test</h1>\n<p>nihaoya</p>\n"
     },
     {
       "type": "doc",

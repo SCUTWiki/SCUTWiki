@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    SCUTWiki 棣栭〉 / 绔欑偣澶撮儴鏍峰紡
    鍙橀噺鏀惧湪 :root锛屽ご閮ㄥ湪涓や釜浣嶇疆锛堥椤?.hp 鍐呫€佸叾瀹冮〉闈?#app 鍐咃級閮借兘鍙栧埌
    ============================================================ */
@@ -1033,3 +1033,190 @@ html[data-theme='light'] .hp-note { color: rgba(19, 34, 27, 0.42); }
 .hp-folder-face { pointer-events: none; }
 .hp-folder:not(.flipped) .hp-folder-front { pointer-events: auto; }
 .hp-folder.flipped .hp-folder-back { pointer-events: auto; }
+
+/* ============================================================
+   互动实验 001：限定词斗蛐蛐
+   首页左侧窄栏里的竖排入口，不抢主模块的视觉。
+   ============================================================ */
+.hp-gutter-play {
+  position: absolute;
+  left: 0;
+  right: 2px;
+  top: 96px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
+  border: 1px solid rgba(242, 239, 228, 0.17);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(67, 181, 129, 0.13), transparent 46%),
+    rgba(242, 239, 228, 0.025);
+  color: rgba(242, 239, 228, 0.5);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.hp-gutter-play:hover {
+  border-color: rgba(121, 207, 169, 0.62);
+  background:
+    linear-gradient(180deg, rgba(67, 181, 129, 0.24), transparent 58%),
+    rgba(242, 239, 228, 0.04);
+  color: var(--hp-cream);
+}
+
+.hp-gutter-play-kicker,
+.hp-gutter-play-foot {
+  writing-mode: vertical-rl;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(242, 239, 228, 0.34);
+}
+
+.hp-gutter-play-foot {
+  color: var(--hp-green-soft);
+  letter-spacing: 0.16em;
+}
+
+.hp-gutter-play-title {
+  writing-mode: vertical-rl;
+  font-family: var(--hp-serif);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--hp-cream);
+  padding: 8px 0;
+  border-top: 1px solid rgba(242, 239, 228, 0.14);
+  border-bottom: 1px solid rgba(242, 239, 228, 0.14);
+}
+
+.hp-gutter-play:hover .hp-gutter-play-title {
+  color: var(--hp-green-soft);
+}
+
+html[data-theme='light'] .hp-gutter-play {
+  border-color: rgba(18, 34, 26, 0.16);
+  background:
+    linear-gradient(180deg, rgba(47, 128, 96, 0.13), transparent 48%),
+    rgba(255, 253, 247, 0.3);
+  color: rgba(18, 34, 26, 0.5);
+}
+
+html[data-theme='light'] .hp-gutter-play:hover {
+  border-color: rgba(47, 128, 96, 0.55);
+  background:
+    linear-gradient(180deg, rgba(47, 128, 96, 0.2), transparent 60%),
+    rgba(255, 253, 247, 0.5);
+}
+
+html[data-theme='light'] .hp-gutter-play-kicker,
+html[data-theme='light'] .hp-gutter-play-foot {
+  color: rgba(18, 34, 26, 0.34);
+}
+
+html[data-theme='light'] .hp-gutter-play-title {
+  color: #13221b;
+  border-color: rgba(18, 34, 26, 0.14);
+}
+
+html[data-theme='light'] .hp-gutter-play:hover .hp-gutter-play-title {
+  color: #1d5b45;
+}
+
+@media (max-width: 1280px) {
+  .hp-gutter-play {
+    height: 300px;
+  }
+}
+
+/* 窄屏隐藏左栏后，用一条横向入口把互动实验留在首页上 */
+.hp-mobile-game {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .hp-mobile-game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 20px;
+    padding: 13px 16px;
+    border: 1px solid rgba(242, 239, 228, 0.18);
+    border-radius: 6px;
+    background:
+      linear-gradient(90deg, rgba(67, 181, 129, 0.14), transparent 70%),
+      rgba(242, 239, 228, 0.025);
+    color: var(--hp-cream);
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .hp-mobile-game:hover {
+    border-color: rgba(121, 207, 169, 0.6);
+    background:
+      linear-gradient(90deg, rgba(67, 181, 129, 0.24), transparent 70%),
+      rgba(242, 239, 228, 0.04);
+  }
+
+  .hp-mobile-game-kicker {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    color: var(--hp-green-soft);
+    white-space: nowrap;
+  }
+
+  .hp-mobile-game strong {
+    font-family: var(--hp-serif);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: var(--hp-cream);
+    white-space: nowrap;
+  }
+
+  .hp-mobile-game-foot {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: rgba(242, 239, 228, 0.5);
+    white-space: nowrap;
+  }
+
+  html[data-theme='light'] .hp-mobile-game {
+    border-color: rgba(18, 34, 26, 0.16);
+    background:
+      linear-gradient(90deg, rgba(47, 128, 96, 0.12), transparent 70%),
+      rgba(255, 253, 247, 0.4);
+    color: #13221b;
+  }
+
+  html[data-theme='light'] .hp-mobile-game-kicker {
+    color: #1d5b45;
+  }
+
+  html[data-theme='light'] .hp-mobile-game strong {
+    color: #13221b;
+  }
+
+  html[data-theme='light'] .hp-mobile-game-foot {
+    color: rgba(18, 34, 26, 0.5);
+  }
+}
+
+@media (max-width: 560px) {
+  .hp-mobile-game {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 12px 14px;
+  }
+
+  .hp-mobile-game strong {
+    font-size: 17px;
+  }
+
+  .hp-mobile-game-foot {
+    flex-basis: auto;
+  }
+}

@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
@@ -34,12 +34,12 @@ const { counts } = useContentStats()
           <article class="pg-card">
             <span class="pg-tag">02 / 共建</span>
             <h3>任何人都能补充和纠错</h3>
-            <p>词条不设门槛，改动都留在 Git 记录里。发现过时的信息，直接提 PR 就行。</p>
+            <p>词条不设门槛，改动都留在 Git 记录里。发现过时的信息，直接投稿联系就行。</p>
           </article>
           <article class="pg-card">
             <span class="pg-tag">03 / 开源</span>
             <h3>代码和小工具都开放</h3>
-            <p>站点本身开源，欢迎 fork 成你自己学校的版本，或者把常用脚本放进开源模块。</p>
+            <p>站点本身开源，欢迎改成你自己学校的版本，或者把常用脚本放进开源模块（联系我们）。</p>
           </article>
         </div>
       </section>
@@ -54,11 +54,9 @@ const { counts } = useContentStats()
       </section>
 
       <section class="pg-section">
-        <h2>怎么走到这里</h2>
+        <h2>功能与模块更新日志</h2>
         <ul class="pg-list">
-          <li><span class="k">2025.09</span><span class="v">从一份共享文档开始，先把新生最常问的问题整理成清单。</span></li>
-          <li><span class="k">2026.03</span><span class="v">迁移到 Vue + Vite，页面从静态文件变成可维护的组件。</span></li>
-          <li><span class="k">2026.11</span><span class="v">首页改版，加入模块目录、深浅色主题与学生常用入口。</span></li>
+          <li><span class="k">2026.11</span><span class="v">网页初成立，六大主模块与各基础面板设计完毕</span></li>
         </ul>
       </section>
 
