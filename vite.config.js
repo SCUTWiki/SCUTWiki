@@ -53,4 +53,17 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    watch: {
+      // 编辑器和系统留下的临时文件会导致 EBUSY，直接忽略
+      ignored: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/.*.tmpdir/**',
+        '**/*.tmpdir/**',
+        '**/.edge-tmp/**',
+        '**/*.tmp',
+      ],
+    },
+  },
 })
