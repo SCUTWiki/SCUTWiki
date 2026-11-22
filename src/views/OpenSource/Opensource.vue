@@ -1,16 +1,72 @@
+<script setup>
+import { onBeforeUnmount, ref, watch } from 'vue'
+
+const STORAGE_KEY = 'opensource-theme'
+
+// 本页独立的深色模式：不跟站点全局主题联动，只影响 /opensource
+const dark = ref(false)
+
+if (typeof window !== 'undefined') {
+  dark.value = localStorage.getItem(STORAGE_KEY) === 'dark'
+}
+
+watch(dark, (value) => {
+  localStorage.setItem(STORAGE_KEY, value ? 'dark' : 'light')
+})
+
+// 拉绳动画：切换主题的同时让绳子坠一下再回弹
+const pulling = ref(false)
+let pullTimer = null
+
+function pullCord() {
+  dark.value = !dark.value
+  pulling.value = true
+  clearTimeout(pullTimer)
+  pullTimer = setTimeout(() => {
+    pulling.value = false
+  }, 240)
+}
+
+onBeforeUnmount(() => clearTimeout(pullTimer))
+</script>
+
 <template>
-  <div class="opensource-page">
+  <div class="opensource-page" :class="{ 'is-dark': dark }">
 
     <div class="top">
       <RouterLink class="logo" to="/" title="返回首页">SCUT<span>wiki</span></RouterLink>
-      <RouterLink to="/" title="返回首页">首页</RouterLink>
-      <a href="">指南</a>
-      <a href="">学习</a>
-      <a href="">生活</a>
-      <a href="">发展</a>
-      <a href="">社交</a>
-      <a href="">资料库</a>
-      <a class="on" href="">开源社区</a>
+
+      <nav class="top-nav">
+        <RouterLink to="/" title="返回首页">首页</RouterLink>
+        <a href="">指南</a>
+        <a href="">学习</a>
+        <a href="">生活</a>
+        <a href="">发展</a>
+        <a href="">社交</a>
+        <a href="">资料库</a>
+        <a class="on" href="">开源社区</a>
+      </nav>
+
+      <!-- 床头台灯拉绳：拉一下开灯（深色），再拉一下关灯（浅色） -->
+      <div class="tools">
+        <button
+          class="lamp-btn"
+          :class="{ 'is-on': dark, 'is-pulling': pulling }"
+          type="button"
+          :aria-pressed="dark"
+          :aria-label="dark ? '关灯：切换到浅色模式' : '开灯：切换到深色模式'"
+          :title="dark ? '拉一下，关灯' : '拉一下，开灯'"
+          @click="pullCord"
+        >
+          <span class="lamp-halo" aria-hidden="true"></span>
+          <span class="lamp-bulb" aria-hidden="true"></span>
+          <span class="lamp-shade" aria-hidden="true"></span>
+          <span class="lamp-pull" aria-hidden="true">
+            <span class="lamp-cord"></span>
+            <span class="lamp-bead"></span>
+          </span>
+        </button>
+      </div>
     </div>
 
     <div class="page">
@@ -95,7 +151,7 @@
 
         <div class="panel">
           <h2>快速入口</h2>
-          <a class="step" href="">GitHub 仓库</a>
+          <a class="step" href="https://github.com/SCUTWiki/SCUTWiki">GitHub 仓库</a>
           <a class="step" href="">贡献指南</a>
           <a class="step" href="">Issue 反馈</a>
           <a class="step" href="">开发文档</a>
@@ -105,8 +161,8 @@
           <h2>网站信息</h2>
           <p>Star 数 1.2k</p>
           <p>贡献者数 72</p>
-          <p>最后更新 2025-01-10</p>
-          <a class="github" href="">在 GitHub 上贡献</a>
+          <p>最后更新 2026-11-21</p>
+          <a class="github" href="https://github.com/SCUTWiki/SCUTWiki">在 GitHub 上贡献</a>
         </div>
       </div>
 
@@ -123,6 +179,14 @@
     font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 14px;
     line-height: 1.6;
+
+    /* 入口卡片配色（浅色模式）：只改这一组就影响浅色 */
+    --card-blue: #e6eefc;
+    --card-purple: #f1e9fd;
+    --card-yellow: #fdf3da;
+    --card-green: #e3f4e8;
+    --card-sky: #e6edfb;
+    --card-pink: #fde7ea;
   }
 
   .top {
@@ -133,8 +197,23 @@
     padding: 0 20px;
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1;
+    min-width: 0;
     overflow-x: auto;
     white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .top-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .top a {
@@ -284,27 +363,27 @@
   }
 
   .blue {
-    background: #e6eefc;
+    background: var(--card-blue);
   }
 
   .purple {
-    background: #f1e9fd;
+    background: var(--card-purple);
   }
 
   .yellow {
-    background: #fdf3da;
+    background: var(--card-yellow);
   }
 
   .green {
-    background: #e3f4e8;
+    background: var(--card-green);
   }
 
   .sky {
-    background: #e6edfb;
+    background: var(--card-sky);
   }
 
   .pink {
-    background: #fde7ea;
+    background: var(--card-pink);
   }
 
   .bottom {
@@ -349,6 +428,254 @@
     display: block;
     margin-top: 10px;
     color: #1d4ed8;
+  }
+
+  /* ===== 深色模式开关 ===== */
+  .tools {
+    flex: none;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .lamp-btn {
+    position: relative;
+    display: block;
+    width: 34px;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+
+  .lamp-btn:focus-visible {
+    outline: 2px solid #2fa06b;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* 灯罩上方那一小段吊线，让它看起来是挂在顶栏上的 */
+  .lamp-btn::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 1px;
+    height: 6px;
+    transform: translateX(-50%);
+    background: currentColor;
+    opacity: 0.55;
+  }
+
+  .lamp-halo {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 217, 138, 0.42) 0%, rgba(255, 217, 138, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .lamp-bulb {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .lamp-shade {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 26px;
+    height: 13px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #dbe2ea 0%, #98a5b3 100%);
+    clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%);
+    transition: background 0.3s ease;
+  }
+
+  .lamp-pull {
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+
+  .lamp-cord {
+    width: 1px;
+    height: 12px;
+    background: currentColor;
+    transform-origin: top center;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .lamp-bead {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .lamp-btn:hover .lamp-bead,
+  .lamp-btn:focus-visible .lamp-bead {
+    transform: scale(1.18);
+  }
+
+  /* 拉绳：绳子被拉长，拉珠跟着往下坠，松手回弹 */
+  .lamp-btn.is-pulling .lamp-cord {
+    transform: scaleY(1.5);
+  }
+
+  .lamp-btn.is-pulling .lamp-bead {
+    transform: translateY(6px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lamp-cord,
+    .lamp-bead {
+      transition: none;
+    }
+  }
+
+  /* 开灯（深色模式） */
+  .lamp-btn.is-on {
+    color: #b9c4d0;
+  }
+
+  .lamp-btn.is-on .lamp-shade {
+    background: linear-gradient(180deg, #5cd6a0 0%, #1f7a52 100%);
+  }
+
+  .lamp-btn.is-on .lamp-bulb {
+    background: #ffdc8a;
+    box-shadow: 0 0 10px 3px rgba(255, 220, 138, 0.6);
+  }
+
+  .lamp-btn.is-on .lamp-halo {
+    opacity: 1;
+  }
+
+  /* ===== 本页深色模式：黑底白字，开源社区头图由深蓝黑换成绿色 ===== */
+  .opensource-page.is-dark {
+    background: #000;
+    color: #f2f5f8;
+
+    /* 入口卡片配色（深色模式）：高饱和，黑底上更跳 */
+    --card-blue: #2563eb;
+    --card-purple: #7c3aed;
+    --card-yellow: #b45309;
+    --card-green: #15803d;
+    --card-sky: #0369a1;
+    --card-pink: #be123c;
+  }
+
+  .is-dark .top {
+    background: #050607;
+    border-bottom-color: #1e2329;
+  }
+
+  .is-dark .top a {
+    color: #b9c4d0;
+  }
+
+  .is-dark .logo {
+    color: #f2f5f8;
+  }
+
+  .is-dark .logo span,
+  .is-dark .top .on {
+    color: #5fd39b;
+  }
+
+  .is-dark .left a {
+    color: #b9c4d0;
+  }
+
+  .is-dark .left .sub {
+    color: #8b97a6;
+  }
+
+  .is-dark .hero {
+    background: linear-gradient(135deg, #2fa06b 0%, #136b45 100%);
+    color: #fff;
+  }
+
+  .is-dark .hero p {
+    color: #d8f2e4;
+  }
+
+  .is-dark .search {
+    background: #0d1117;
+    border-color: #23282f;
+  }
+
+  .is-dark .search svg,
+  .is-dark .search input::placeholder {
+    color: #6b7684;
+  }
+
+  .is-dark .search input {
+    color: #f2f5f8;
+  }
+
+  .is-dark .search kbd {
+    background: #161b22;
+    border-color: #23282f;
+    color: #9aa7b5;
+  }
+
+  .is-dark .search:focus-within {
+    border-color: #2fa06b;
+  }
+
+  .is-dark .card {
+    color: #f2f5f8;
+  }
+
+  .is-dark .card p {
+    color: #f8fafc;
+  }
+
+  .is-dark .panel {
+    background: #0d1117;
+    border-color: #23282f;
+  }
+
+  .is-dark .panel h2 {
+    color: #f2f5f8;
+  }
+
+  .is-dark .panel p,
+  .is-dark .step {
+    color: #c3cedb;
+  }
+
+  @media (max-width: 860px) {
+    .is-dark .left {
+      border-bottom-color: #1e2329;
+    }
+  }
+
+  .is-dark .more,
+  .is-dark .github {
+    color: #5fd39b;
   }
 
   /* 窄屏：侧栏改为顶部横向导航，卡片和面板单列显示 */
