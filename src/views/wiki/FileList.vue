@@ -43,7 +43,6 @@ function humanSize(bytes) {
                 · 打开 ↗
               </span>
             </a>
-            <p>{{ file.path }}<template v-if="file.from"> · 引用自 {{ file.from }}</template></p>
           </li>
         </ul>
         <p v-else class="pg-note">还没有登记任何文件。</p>

@@ -22,8 +22,7 @@ const entry = computed(() => entries.find((item) => item.slug === route.params.s
         <span class="pg-eyebrow">{{ entry?.section || 'WIKI' }}</span>
         <h1>{{ entry?.title || '词条不存在' }}</h1>
         <p v-if="entry" class="pg-meta">
-          更新于 {{ formatDate(entry.updatedAt) }} · {{ entry.links.length }} 条链接 ·
-          <code>{{ entry.path }}</code>
+          更新于 {{ formatDate(entry.updatedAt) }} · {{ entry.links.length }} 条链接
         </p>
       </header>
 

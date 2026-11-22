@@ -15,7 +15,6 @@ defineProps({
         <span class="entry-date">{{ formatDate(entry.updatedAt) }}</span>
       </RouterLink>
       <p class="entry-sum">{{ entry.summary }}</p>
-      <p class="entry-meta">{{ entry.section }} · {{ entry.path }}</p>
     </li>
   </ul>
   <p v-else class="entry-empty">{{ emptyText }}</p>
@@ -58,11 +57,6 @@ defineProps({
   line-height: 1.7;
   color: var(--color-text);
   opacity: 0.7;
-}
-.entry-meta {
-  margin: 0.25rem 0 0;
-  font-size: 0.7rem;
-  opacity: 0.35;
 }
 .entry-empty {
   margin-top: 1rem;

@@ -31,7 +31,6 @@ const { links } = useContentStats()
               <b>{{ link.host || link.url }}</b>
               <span>{{ formatDate(link.updatedAt) }}</span>
             </a>
-            <p>{{ link.url }}<template v-if="link.from"> · 来自 {{ link.from }}</template></p>
           </li>
         </ul>
         <p v-else class="pg-note">还没有登记任何外链。</p>
