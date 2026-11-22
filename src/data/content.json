@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-11-22T10:53:19.859Z",
+  "counts": {
+    "doc": 4,
+    "file": 1,
+    "link": 0
+  },
+  "fileTypes": {
+    "png": 1
+  },
+  "entries": [
+    {
+      "type": "doc",
+      "slug": "about",
+      "title": "关于",
+      "section": "其他模块",
+      "module": "more",
+      "submodule": "misc",
+      "summary": "nihaoya",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/misc/about.md",
+      "href": "/wiki/about",
+      "html": "<h1>关于</h1>\n<p>hello</p>\n"
+    },
+    {
+      "type": "doc",
+      "slug": "school-orgs",
+      "title": "校级组织",
+      "section": "组织模块",
+      "module": "organization",
+      "submodule": null,
+      "summary": "华南理工大学面向本科生的校级机构与组织，链接指向学校官网。",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/organization/school-orgs.md",
+      "href": "/wiki/school-orgs",
+      "html": "<p>本篇汇总华南理工大学面向本科生的校级机构与组织，链接均指向学校官网。\n信息来源：<a href=\"https://www.scut.edu.cn/new/8996/list.htm\">华南理工大学官网 · 机构设置</a></p>\n<blockquote>\n<p>提示：校级组织分为「职能部门」和「学生组织」两类。前者管办事、开证明、办手续；后者招学生加入、办活动。</p>\n</blockquote>\n<h2>一、与学生工作直接相关</h2>\n<h3>党委学生工作部（学生工作处）</h3>\n<p>学校学生工作的主管部门，下设多个中心。</p>\n<ul>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/\">学生工作部（学生工作处）官网</a></strong></li>\n<li><strong><a href=\"https://jyzx.scut.edu.cn/\">学生就业指导中心</a></strong>：就业指导、招聘信息、三方协议</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/xlzx/list.htm\">心理健康教育与咨询中心</a></strong>：心理咨询预约</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/aid/\">学生资助管理中心</a></strong>：助学贷款、奖助学金、勤工助学</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/youth/\">校团委</a></strong>：共青团、志愿服务、社会实践</li>\n</ul>\n<h3>本科生院</h3>\n<p>本科教学的主管部门，课程、成绩、学籍、毕业都归口这里。</p>\n<ul>\n<li><strong><a href=\"https://jw.scut.edu.cn/\">本科生院（教务处）官网</a></strong></li>\n<li><a href=\"https://admission.scut.edu.cn/\">招生办公室</a>：本科招生</li>\n<li><a href=\"https://bbtxt.scut.edu.cn/\">百步梯创新学院</a>：拔尖创新人才培养</li>\n</ul>\n<blockquote>\n<p>选课、查成绩、开在读证明，一般走 <strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong>，不直接找本科生院。</p>\n</blockquote>\n<h2>二、办事与服务入口</h2>\n<p>新生最常用的几个入口都在这里，建议收藏。</p>\n<ul>\n<li><strong><a href=\"http://freshman.scut.edu.cn/\">数字迎新系统</a></strong>：新生报到必用</li>\n<li><strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong>：一站式线上办事</li>\n<li><strong><a href=\"https://fssc.scut.edu.cn/\">师生服务中心</a></strong>：线下办事窗口</li>\n<li><a href=\"https://pay.cw.scut.edu.cn\">统一支付平台</a>：学费、住宿费缴纳</li>\n<li><a href=\"https://www.lib.scut.edu.cn/main.htm\">图书馆</a>：借书、预约座位、数据库</li>\n<li><strong><a href=\"http://web.scut.edu.cn/\">网络与信息化办公室</a></strong>：校园网、VPN、统一认证</li>\n<li><a href=\"https://www.scut.edu.cn/hospital/\">校医院</a>：就医、体检、医保</li>\n<li><a href=\"http://www2.scut.edu.cn/houqin/\">后勤处</a>：宿舍、食堂、报修</li>\n<li><a href=\"https://www2.scut.edu.cn/security/\">党委保卫部（保卫处）</a>：户籍、安全、失物招领</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/xlzx1/list.htm\">心理咨询</a></strong>：免费心理咨询</li>\n</ul>\n<h2>三、校区管理</h2>\n<p>华工有三个校区，新生先确认自己在哪个校区。</p>\n<ul>\n<li><a href=\"http://www2.scut.edu.cn/scutnxq/\">大学城校区管委会办公室</a></li>\n<li><strong><a href=\"http://www2.scut.edu.cn/gzic/\">广州国际校区</a></strong>：学生事务、教学事务、全球事务分设办公室<ul>\n<li><a href=\"http://www2.scut.edu.cn/gzic/2018/1101/c30300a442078/page.htm\">广州国际校区学生事务办公室</a></li>\n</ul>\n</li>\n</ul>\n<h2>四、院系设置</h2>\n<p>本科生的日常管理、辅导员、专业课都在学院。<strong>注意：院系内容由学院模块维护，这里只放官网入口。</strong></p>\n<p>全部院系名单见：<a href=\"https://www.scut.edu.cn/new/8996/list.htm\">机构设置 · 院系设置</a></p>\n<p>部分与本科教学相关度高的学院：</p>\n<ul>\n<li><a href=\"http://www.scut.edu.cn/smae/\">机械与汽车工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/architecture/\">建筑学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/ee/\">电子与信息学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/cs/\">计算机科学与工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sse/\">软件学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/ep/\">电力学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/automation/\">自动化科学与工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sba/\">工商管理学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/spa/\">公共管理学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sfl/\">外国语学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/law/index.htm\">法学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/math/\">数学学院</a></li>\n</ul>\n<blockquote>\n<p>完整名单较多，建议直接看官网机构设置页，避免遗漏或过时。</p>\n</blockquote>\n<h2>五、常用联系方式</h2>\n<table>\n<thead>\n<tr>\n<th>事项</th>\n<th>入口</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>报到入学</td>\n<td><strong><a href=\"http://freshman.scut.edu.cn/\">数字迎新系统</a></strong></td>\n</tr>\n<tr>\n<td>选课查分</td>\n<td><strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong></td>\n</tr>\n<tr>\n<td>就业协议</td>\n<td><strong><a href=\"https://jyzx.scut.edu.cn/\">就业中心</a></strong></td>\n</tr>\n<tr>\n<td>缴费</td>\n<td><a href=\"https://pay.cw.scut.edu.cn\">统一支付平台</a></td>\n</tr>\n<tr>\n<td>校园网</td>\n<td><strong><a href=\"http://web.scut.edu.cn/\">信息化服务</a></strong></td>\n</tr>\n<tr>\n<td>心理求助</td>\n<td><strong><a href=\"https://www2.scut.edu.cn/student/xlzx/list.htm\">心理咨询中心</a></strong></td>\n</tr>\n</tbody></table>\n<hr>\n<h2>说明</h2>\n<ul>\n<li>以上链接来自华南理工大学官网 <a href=\"https://www.scut.edu.cn/new/8996/list.htm\">机构设置页面</a>，后续如官网调整可能失效。</li>\n<li>学生组织（学生会、社团等）的招新与活动信息，请关注对应组织的公众号，本文暂未收录。</li>\n<li>内容持续补充中，欢迎提交 PR。</li>\n</ul>\n"
+    },
+    {
+      "type": "doc",
+      "slug": "colleges",
+      "title": "学院图鉴",
+      "section": "学院模块",
+      "module": "faculty",
+      "submodule": null,
+      "summary": "六个学院的图标与标语速览。",
+      "updatedAt": "2026-11-14T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/faculty/colleges.md",
+      "href": "/wiki/colleges",
+      "html": "<h2>学院图鉴</h2>\n<ul>\n<li>💻 计算机学院 — Code is Law · 编织未来</li>\n<li>⚙️ 机械与汽车 — Precision &amp; Power · 驱动世界</li>\n<li>🏛️ 建筑学院 — Form Follows Function · 构筑空间</li>\n<li>⚡ 电子与信息 — Connecting the World · 敏捷触达</li>\n<li>⚗️ 化学与化工 — Transmutation of Matter · 探索本质</li>\n<li>🌍 外国语学院 — Language Connects · 沟通无界</li>\n</ul>\n"
+    },
+    {
+      "type": "doc",
+      "slug": "scams",
+      "title": "常见诈骗",
+      "section": "其他模块",
+      "module": "more",
+      "submodule": "dangers",
+      "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
+      "updatedAt": "2026-11-10T00:00:00.000Z",
+      "links": [],
+      "files": [
+        "public/files/scamsPhoto.png"
+      ],
+      "path": "src/content/more/dangers/scams.md",
+      "href": "/wiki/scams",
+      "html": "<h2>常见套路</h2>\n<ol>\n<li><p>各种私下直接邀请的新生群，进去就私聊问信息、卖课。</p>\n</li>\n<li><p>勤工俭学群（各种群都常见），一般在群里发的不要理。</p>\n</li>\n<li><p>单独莫名发邮箱且没看到有其他通知，类似这样：</p>\n</li>\n</ol>\n<p><img src=\"/files/scamsPhoto.png\" alt=\"QQ 邮箱截图\"></p>\n<ol start=\"4\">\n<li>冒充学校官方人员，在群里直接邀请新生进各种禁言群，然后私信发课程领取。</li>\n</ol>\n"
+    }
+  ],
+  "files": [
+    {
+      "type": "file",
+      "title": "scamsPhoto.png",
+      "path": "public/files/scamsPhoto.png",
+      "ext": "png",
+      "size": 431522,
+      "from": "scams",
+      "url": "/files/scamsPhoto.png",
+      "updatedAt": "2026-11-21T22:34:40+08:00"
+    }
+  ],
+  "links": [],
+  "recent": [
+    {
+      "type": "doc",
+      "slug": "about",
+      "title": "关于",
+      "section": "其他模块",
+      "module": "more",
+      "submodule": "misc",
+      "summary": "nihaoya",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/more/misc/about.md",
+      "href": "/wiki/about",
+      "html": "<h1>关于</h1>\n<p>hello</p>\n"
+    },
+    {
+      "type": "doc",
+      "slug": "school-orgs",
+      "title": "校级组织",
+      "section": "组织模块",
+      "module": "organization",
+      "submodule": null,
+      "summary": "华南理工大学面向本科生的校级机构与组织，链接指向学校官网。",
+      "updatedAt": "2026-11-22T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/organization/school-orgs.md",
+      "href": "/wiki/school-orgs",
+      "html": "<p>本篇汇总华南理工大学面向本科生的校级机构与组织，链接均指向学校官网。\n信息来源：<a href=\"https://www.scut.edu.cn/new/8996/list.htm\">华南理工大学官网 · 机构设置</a></p>\n<blockquote>\n<p>提示：校级组织分为「职能部门」和「学生组织」两类。前者管办事、开证明、办手续；后者招学生加入、办活动。</p>\n</blockquote>\n<h2>一、与学生工作直接相关</h2>\n<h3>党委学生工作部（学生工作处）</h3>\n<p>学校学生工作的主管部门，下设多个中心。</p>\n<ul>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/\">学生工作部（学生工作处）官网</a></strong></li>\n<li><strong><a href=\"https://jyzx.scut.edu.cn/\">学生就业指导中心</a></strong>：就业指导、招聘信息、三方协议</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/xlzx/list.htm\">心理健康教育与咨询中心</a></strong>：心理咨询预约</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/aid/\">学生资助管理中心</a></strong>：助学贷款、奖助学金、勤工助学</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/youth/\">校团委</a></strong>：共青团、志愿服务、社会实践</li>\n</ul>\n<h3>本科生院</h3>\n<p>本科教学的主管部门，课程、成绩、学籍、毕业都归口这里。</p>\n<ul>\n<li><strong><a href=\"https://jw.scut.edu.cn/\">本科生院（教务处）官网</a></strong></li>\n<li><a href=\"https://admission.scut.edu.cn/\">招生办公室</a>：本科招生</li>\n<li><a href=\"https://bbtxt.scut.edu.cn/\">百步梯创新学院</a>：拔尖创新人才培养</li>\n</ul>\n<blockquote>\n<p>选课、查成绩、开在读证明，一般走 <strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong>，不直接找本科生院。</p>\n</blockquote>\n<h2>二、办事与服务入口</h2>\n<p>新生最常用的几个入口都在这里，建议收藏。</p>\n<ul>\n<li><strong><a href=\"http://freshman.scut.edu.cn/\">数字迎新系统</a></strong>：新生报到必用</li>\n<li><strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong>：一站式线上办事</li>\n<li><strong><a href=\"https://fssc.scut.edu.cn/\">师生服务中心</a></strong>：线下办事窗口</li>\n<li><a href=\"https://pay.cw.scut.edu.cn\">统一支付平台</a>：学费、住宿费缴纳</li>\n<li><a href=\"https://www.lib.scut.edu.cn/main.htm\">图书馆</a>：借书、预约座位、数据库</li>\n<li><strong><a href=\"http://web.scut.edu.cn/\">网络与信息化办公室</a></strong>：校园网、VPN、统一认证</li>\n<li><a href=\"https://www.scut.edu.cn/hospital/\">校医院</a>：就医、体检、医保</li>\n<li><a href=\"http://www2.scut.edu.cn/houqin/\">后勤处</a>：宿舍、食堂、报修</li>\n<li><a href=\"https://www2.scut.edu.cn/security/\">党委保卫部（保卫处）</a>：户籍、安全、失物招领</li>\n<li><strong><a href=\"https://www2.scut.edu.cn/student/xlzx1/list.htm\">心理咨询</a></strong>：免费心理咨询</li>\n</ul>\n<h2>三、校区管理</h2>\n<p>华工有三个校区，新生先确认自己在哪个校区。</p>\n<ul>\n<li><a href=\"http://www2.scut.edu.cn/scutnxq/\">大学城校区管委会办公室</a></li>\n<li><strong><a href=\"http://www2.scut.edu.cn/gzic/\">广州国际校区</a></strong>：学生事务、教学事务、全球事务分设办公室<ul>\n<li><a href=\"http://www2.scut.edu.cn/gzic/2018/1101/c30300a442078/page.htm\">广州国际校区学生事务办公室</a></li>\n</ul>\n</li>\n</ul>\n<h2>四、院系设置</h2>\n<p>本科生的日常管理、辅导员、专业课都在学院。<strong>注意：院系内容由学院模块维护，这里只放官网入口。</strong></p>\n<p>全部院系名单见：<a href=\"https://www.scut.edu.cn/new/8996/list.htm\">机构设置 · 院系设置</a></p>\n<p>部分与本科教学相关度高的学院：</p>\n<ul>\n<li><a href=\"http://www.scut.edu.cn/smae/\">机械与汽车工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/architecture/\">建筑学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/ee/\">电子与信息学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/cs/\">计算机科学与工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sse/\">软件学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/ep/\">电力学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/automation/\">自动化科学与工程学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sba/\">工商管理学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/spa/\">公共管理学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/sfl/\">外国语学院</a></li>\n<li><a href=\"http://www.scut.edu.cn/law/index.htm\">法学院</a></li>\n<li><a href=\"http://www2.scut.edu.cn/math/\">数学学院</a></li>\n</ul>\n<blockquote>\n<p>完整名单较多，建议直接看官网机构设置页，避免遗漏或过时。</p>\n</blockquote>\n<h2>五、常用联系方式</h2>\n<table>\n<thead>\n<tr>\n<th>事项</th>\n<th>入口</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>报到入学</td>\n<td><strong><a href=\"http://freshman.scut.edu.cn/\">数字迎新系统</a></strong></td>\n</tr>\n<tr>\n<td>选课查分</td>\n<td><strong><a href=\"https://ehall.scut.edu.cn/\">办事大厅</a></strong></td>\n</tr>\n<tr>\n<td>就业协议</td>\n<td><strong><a href=\"https://jyzx.scut.edu.cn/\">就业中心</a></strong></td>\n</tr>\n<tr>\n<td>缴费</td>\n<td><a href=\"https://pay.cw.scut.edu.cn\">统一支付平台</a></td>\n</tr>\n<tr>\n<td>校园网</td>\n<td><strong><a href=\"http://web.scut.edu.cn/\">信息化服务</a></strong></td>\n</tr>\n<tr>\n<td>心理求助</td>\n<td><strong><a href=\"https://www2.scut.edu.cn/student/xlzx/list.htm\">心理咨询中心</a></strong></td>\n</tr>\n</tbody></table>\n<hr>\n<h2>说明</h2>\n<ul>\n<li>以上链接来自华南理工大学官网 <a href=\"https://www.scut.edu.cn/new/8996/list.htm\">机构设置页面</a>，后续如官网调整可能失效。</li>\n<li>学生组织（学生会、社团等）的招新与活动信息，请关注对应组织的公众号，本文暂未收录。</li>\n<li>内容持续补充中，欢迎提交 PR。</li>\n</ul>\n"
+    },
+    {
+      "type": "file",
+      "title": "scamsPhoto.png",
+      "path": "public/files/scamsPhoto.png",
+      "ext": "png",
+      "size": 431522,
+      "from": "scams",
+      "url": "/files/scamsPhoto.png",
+      "updatedAt": "2026-11-21T22:34:40+08:00"
+    },
+    {
+      "type": "doc",
+      "slug": "colleges",
+      "title": "学院图鉴",
+      "section": "学院模块",
+      "module": "faculty",
+      "submodule": null,
+      "summary": "六个学院的图标与标语速览。",
+      "updatedAt": "2026-11-14T00:00:00.000Z",
+      "links": [],
+      "files": [],
+      "path": "src/content/faculty/colleges.md",
+      "href": "/wiki/colleges",
+      "html": "<h2>学院图鉴</h2>\n<ul>\n<li>💻 计算机学院 — Code is Law · 编织未来</li>\n<li>⚙️ 机械与汽车 — Precision &amp; Power · 驱动世界</li>\n<li>🏛️ 建筑学院 — Form Follows Function · 构筑空间</li>\n<li>⚡ 电子与信息 — Connecting the World · 敏捷触达</li>\n<li>⚗️ 化学与化工 — Transmutation of Matter · 探索本质</li>\n<li>🌍 外国语学院 — Language Connects · 沟通无界</li>\n</ul>\n"
+    },
+    {
+      "type": "doc",
+      "slug": "scams",
+      "title": "常见诈骗",
+      "section": "其他模块",
+      "module": "more",
+      "submodule": "dangers",
+      "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
+      "updatedAt": "2026-11-10T00:00:00.000Z",
+      "links": [],
+      "files": [
+        "public/files/scamsPhoto.png"
+      ],
+      "path": "src/content/more/dangers/scams.md",
+      "href": "/wiki/scams",
+      "html": "<h2>常见套路</h2>\n<ol>\n<li><p>各种私下直接邀请的新生群，进去就私聊问信息、卖课。</p>\n</li>\n<li><p>勤工俭学群（各种群都常见），一般在群里发的不要理。</p>\n</li>\n<li><p>单独莫名发邮箱且没看到有其他通知，类似这样：</p>\n</li>\n</ol>\n<p><img src=\"/files/scamsPhoto.png\" alt=\"QQ 邮箱截图\"></p>\n<ol start=\"4\">\n<li>冒充学校官方人员，在群里直接邀请新生进各种禁言群，然后私信发课程领取。</li>\n</ol>\n"
+    }
+  ]
+}

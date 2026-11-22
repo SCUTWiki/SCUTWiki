@@ -1,25 +1,11 @@
 /**
  * SCUTwiki · 大学主模块 · 站点数据（唯一信息架构来源）
  *
- * 架构：hash 路由的多页 Wiki
- *   #/                      首页：三张板块卡片 + 完整目录
- *   #/<pageId>              各大页面（校园 / 学习 / 生活）
- *   #/<pageId>/<itemId>     直达某页的某个小节（可复制的深链）
+ * 首页     #/                  三张卡片 + 完整目录
+ * 板块页   #<itemId>           用全局 WikiLayout 的 switch 模式只显示该小节
  *
- * pages 是唯一数据源，由此派生：
- *   cards        → 首页三张卡片（即全部页面）
- *   toc          → 首页完整目录（含各页子条目）
- *   pageToc(id)  → 某板块页的侧边目录（一级=板块，二级=小节）
- *   flatSections → 全局篇序，供「上一篇 / 下一篇」使用
- *   pages[].items → 各大页面的正文小节
- *
- * 每个 item 可带：
- *   kind     占位形式：quote / table / list / cards / details
- *   hint     填写提示（内容仍留空）
- *   columns  可选「专栏」：并入该小节的专题子块 [{ id, label, hint }]
- *            专栏不单独进目录，深链只到小节级别。
+ * 派生：cards / toc / pageToc(id) / flatSections / findItem / firstItemId / neighbors
  */
-
 export const pages = [
   {
     id: 'campus', label: '校园', icon: '🏫',
@@ -78,35 +64,45 @@ export const pages = [
   },
 ]
 
-/** 首页三张卡片 = 全部页面（校园 / 学习 / 生活） */
-export const cards = pages.map(p => ({
-  id: p.id, label: p.label, icon: p.icon, desc: p.desc,
-}))
+/** 首页三张卡片 = 全部页面 */
+export const cards = pages.map(p => ({ id: p.id, label: p.label, icon: p.icon, desc: p.desc }))
 
-/** 首页完整目录：页面 + 子条目（专栏不进目录） */
+/** 首页完整目录 */
 export const toc = pages.map(p => ({
-  id: p.id,
-  label: p.label,
+  id: p.id, label: p.label,
   children: p.items.map(i => ({ id: i.id, label: i.label })),
 }))
 
 export const findPage = id => pages.find(p => p.id === id) || null
 
-/** 某板块页的侧边目录：一级 = 板块名，二级 = 该页小节 */
+/**
+ * 板块页目录：扁平一级列表。
+ * 全局 WikiLayout 的 groupOf() 把子项归到父项；传「父+子」结构时
+ * isolateId 指向父项 id 而正文无该元素 → 判空白屏。扁平后每项自成一组。
+ */
 export const pageToc = id => {
   const p = findPage(id)
-  return p ? [{
-    id: p.id, label: p.label,
-    children: p.items.map(i => ({ id: i.id, label: i.label })),
-  }] : []
+  return p ? p.items.map(i => ({ id: i.id, label: i.label })) : []
 }
 
-/** 全局篇序：跨板块把所有小节按「页 → 小节」顺序排成一条线 */
+/** 全局篇序 */
 export const flatSections = pages.flatMap(p => p.items.map(i => ({
-  id: i.id, label: i.label, pageId: p.id, path: `/${p.id}/${i.id}`,
+  id: i.id, label: i.label, pageId: p.id,
 })))
 
-/** 给定小节 id，返回它的上一篇 / 下一篇 */
+/** 按小节 id 找到它及所属页面 */
+export const findItem = id => {
+  for (const p of pages) {
+    const item = p.items.find(i => i.id === id)
+    if (item) return { ...item, pageId: p.id }
+  }
+  return null
+}
+
+/** 某页面首个小节（卡片入口用） */
+export const firstItemId = id => findPage(id)?.items[0]?.id || ''
+
+/** 上一篇 / 下一篇 */
 export const neighbors = id => {
   const i = flatSections.findIndex(s => s.id === id)
   if (i < 0) return { prev: null, next: null }
@@ -116,4 +112,4 @@ export const neighbors = id => {
   }
 }
 
-export default { pages, cards, toc, pageToc, flatSections, neighbors }
+export default { pages, cards, toc, findPage, pageToc, flatSections, findItem, firstItemId, neighbors }

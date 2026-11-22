@@ -596,7 +596,7 @@ body { overflow-x: hidden; }
 }
 .hp-push-card {
   display: grid;
-  grid-template-columns: 220px 1fr 24px;
+  grid-template-columns: 220px 1fr;
   gap: 18px;
   align-items: center;
   padding: 14px;

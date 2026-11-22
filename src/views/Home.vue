@@ -1,9 +1,12 @@
 <script setup>
+import { computed } from 'vue'
+
 import Title from '../components/Title.vue'
 import ModuleCard from '../components/home/ModuleCard.vue'
 import QuickFolder from '../components/home/QuickFolder.vue'
 import StatsLedger from '../components/home/StatsLedger.vue'
 import BottomBand from '../components/home/BottomBand.vue'
+import { useContentStats, fileTypeSummary, formatDate, typeLabel } from '../composables/useContentStats'
 
 const modules = [
   {
@@ -74,21 +77,25 @@ const quickLinks = [
   { label: '全部入口' },
 ]
 
-const stats = [
-  { label: '文章汇总', count: 128, href: '/more' },
+const { counts, fileTypes, recent } = useContentStats()
+
+const stats = computed(() => [
+  { label: '文章汇总', count: counts.doc, href: '/wiki' },
   {
     label: '文件汇总',
-    count: 46,
-    href: '/more',
-    sub: 'PDF 12 · 图片 20 · 表格 8 · 其他 6',
+    count: counts.file,
+    href: '/files',
+    sub: fileTypeSummary(fileTypes) || '暂无文件',
   },
-  { label: '链接汇总', count: 87, href: '/more' },
-]
+  { label: '链接汇总', count: counts.link, href: '/links' },
+])
+
+const latest = computed(() => recent.find((item) => item.type === 'doc') || recent[0])
 
 const footerLinks = [
-  { label: '关于我们', index: '01' },
-  { label: '联系我们 / 投稿', index: '02' },
-  { label: '支持 / 赞助我们', index: '03' },
+  { label: '关于我们', index: '01', href: '/about' },
+  { label: '联系我们 / 投稿', index: '02', href: '/contact-us' },
+  { label: '支持 / 赞助我们', index: '03', href: '/support' },
 ]
 </script>
 
@@ -126,16 +133,18 @@ const footerLinks = [
                 <h2>推送</h2>
                 <span class="hp-line" />
               </div>
-              <div class="hp-push-card">
-                <div class="hp-thumb">封面图</div>
+              <component
+                :is="latest?.href ? 'RouterLink' : 'div'"
+                class="hp-push-card"
+                :to="latest?.href || undefined"
+              >
+                <div class="hp-thumb">最近更新</div>
                 <div class="hp-push-text">
-                  <h3>新生入学指南 · 2026 版</h3>
-                  <p>报到流程、宿舍分配、选课时间线一页看完。附各学院见面会时间表。</p>
+                  <h3>{{ latest?.title || '暂无更新' }}</h3>
+                  <p v-if="latest">更新于 {{ formatDate(latest.updatedAt) }} · {{ typeLabel(latest.type) }}</p>
+                  <p v-else>还没有可展示的内容。</p>
                 </div>
-                <div class="hp-dots">
-                  <i class="on" /><i /><i /><i /><i />
-                </div>
-              </div>
+              </component>
             </section>
           </div>
 

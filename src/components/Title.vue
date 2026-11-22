@@ -119,7 +119,7 @@ function submitSearch() {
     <div class="hp-tool hp-tools">
       <a
         class="hp-ic"
-        href="https://github.com/genshiniubi/SCUTWiki"
+        href="https://github.com/SCUTWiki/SCUTWiki"
         target="_blank"
         rel="noopener"
         title="GitHub 仓库"
