@@ -129,13 +129,20 @@ for (const abs of mdFiles) {
     }
   }
 
+  // 目录结构即归属：
+  //   src/content/more/scams.md              -> module=more,  submodule=null
+  //   src/content/college/campus/intro.md    -> module=college, submodule=campus
+  const parts = relPath.replace(/^src\/content\//, '').split('/')
+  const moduleName = parts[0] || 'root'
+  const submoduleName = parts.length > 2 ? parts[1] : null
+
   entries.push({
     type: 'doc',
     slug,
     title,
     section,
-    // 目录第一段就是模块名：src/content/more/scams.md -> more
-    module: relPath.startsWith('src/content/') ? relPath.split('/')[2] || 'root' : 'root',
+    module: moduleName,
+    submodule: submoduleName,
     summary: String(data.summary || excerptOf(content)),
     updatedAt,
     links,

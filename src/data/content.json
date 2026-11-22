@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T01:47:05.488Z",
+  "generatedAt": "2026-11-22T02:08:53.748Z",
   "counts": {
     "doc": 3,
     "file": 1,
@@ -15,13 +15,14 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "summary": "测试词条。",
+      "submodule": null,
+      "summary": "nihaoya",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
       "path": "src/content/more/about.md",
       "href": "/wiki/about",
-      "html": "<h1>Hello</h1>\n<p>yes test</p>\n"
+      "html": "<h1>关于</h1>\n<p>hello</p>\n"
     },
     {
       "type": "doc",
@@ -29,6 +30,7 @@
       "title": "学院图鉴",
       "section": "学院模块",
       "module": "faculty",
+      "submodule": null,
       "summary": "六个学院的图标与标语速览。",
       "updatedAt": "2026-11-14T00:00:00.000Z",
       "links": [],
@@ -43,6 +45,7 @@
       "title": "常见诈骗",
       "section": "其他模块",
       "module": "more",
+      "submodule": null,
       "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
       "updatedAt": "2026-11-10T00:00:00.000Z",
       "links": [],
@@ -74,13 +77,14 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "summary": "测试词条。",
+      "submodule": null,
+      "summary": "nihaoya",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
       "path": "src/content/more/about.md",
       "href": "/wiki/about",
-      "html": "<h1>Hello</h1>\n<p>yes test</p>\n"
+      "html": "<h1>关于</h1>\n<p>hello</p>\n"
     },
     {
       "type": "file",
@@ -98,6 +102,7 @@
       "title": "学院图鉴",
       "section": "学院模块",
       "module": "faculty",
+      "submodule": null,
       "summary": "六个学院的图标与标语速览。",
       "updatedAt": "2026-11-14T00:00:00.000Z",
       "links": [],
@@ -112,6 +117,7 @@
       "title": "常见诈骗",
       "section": "其他模块",
       "module": "more",
+      "submodule": null,
       "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
       "updatedAt": "2026-11-10T00:00:00.000Z",
       "links": [],

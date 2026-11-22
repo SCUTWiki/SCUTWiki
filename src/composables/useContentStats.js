@@ -17,6 +17,13 @@ export function useContentStats() {
     links: content.links || [],
     recent: content.recent || [],
     generatedAt: content.generatedAt,
+    // 按模块 / 分模块取词条
+    entriesOf: (moduleName, submoduleName) =>
+      (content.entries || []).filter(
+        (entry) =>
+          entry.module === moduleName &&
+          (submoduleName === undefined || entry.submodule === submoduleName),
+      ),
   }
 }
 
