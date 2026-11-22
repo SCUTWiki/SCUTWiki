@@ -1,0 +1,9 @@
+/*
+ * 首页跳转的圆形展开转场
+ * 关掉默认的整页淡入淡出，只保留 ::view-transition-new(root) 的 clip-path 动画
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
