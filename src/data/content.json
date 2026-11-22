@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T02:08:53.748Z",
+  "generatedAt": "2026-11-22T02:37:58.259Z",
   "counts": {
     "doc": 3,
     "file": 1,
@@ -15,12 +15,12 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "submodule": null,
+      "submodule": "misc",
       "summary": "nihaoya",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
-      "path": "src/content/more/about.md",
+      "path": "src/content/more/misc/about.md",
       "href": "/wiki/about",
       "html": "<h1>关于</h1>\n<p>hello</p>\n"
     },
@@ -45,14 +45,14 @@
       "title": "常见诈骗",
       "section": "其他模块",
       "module": "more",
-      "submodule": null,
+      "submodule": "dangers",
       "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
       "updatedAt": "2026-11-10T00:00:00.000Z",
       "links": [],
       "files": [
         "public/files/scamsPhoto.png"
       ],
-      "path": "src/content/more/scams.md",
+      "path": "src/content/more/dangers/scams.md",
       "href": "/wiki/scams",
       "html": "<h2>常见套路</h2>\n<ol>\n<li><p>各种私下直接邀请的新生群，进去就私聊问信息、卖课。</p>\n</li>\n<li><p>勤工俭学群（各种群都常见），一般在群里发的不要理。</p>\n</li>\n<li><p>单独莫名发邮箱且没看到有其他通知，类似这样：</p>\n</li>\n</ol>\n<p><img src=\"/files/scamsPhoto.png\" alt=\"QQ 邮箱截图\"></p>\n<ol start=\"4\">\n<li>冒充学校官方人员，在群里直接邀请新生进各种禁言群，然后私信发课程领取。</li>\n</ol>\n"
     }
@@ -77,12 +77,12 @@
       "title": "关于",
       "section": "其他模块",
       "module": "more",
-      "submodule": null,
+      "submodule": "misc",
       "summary": "nihaoya",
       "updatedAt": "2026-11-22T00:00:00.000Z",
       "links": [],
       "files": [],
-      "path": "src/content/more/about.md",
+      "path": "src/content/more/misc/about.md",
       "href": "/wiki/about",
       "html": "<h1>关于</h1>\n<p>hello</p>\n"
     },
@@ -117,14 +117,14 @@
       "title": "常见诈骗",
       "section": "其他模块",
       "module": "more",
-      "submodule": null,
+      "submodule": "dangers",
       "summary": "新生群、勤工俭学群、假邮件、冒充官方人员这几种常见套路。",
       "updatedAt": "2026-11-10T00:00:00.000Z",
       "links": [],
       "files": [
         "public/files/scamsPhoto.png"
       ],
-      "path": "src/content/more/scams.md",
+      "path": "src/content/more/dangers/scams.md",
       "href": "/wiki/scams",
       "html": "<h2>常见套路</h2>\n<ol>\n<li><p>各种私下直接邀请的新生群，进去就私聊问信息、卖课。</p>\n</li>\n<li><p>勤工俭学群（各种群都常见），一般在群里发的不要理。</p>\n</li>\n<li><p>单独莫名发邮箱且没看到有其他通知，类似这样：</p>\n</li>\n</ol>\n<p><img src=\"/files/scamsPhoto.png\" alt=\"QQ 邮箱截图\"></p>\n<ol start=\"4\">\n<li>冒充学校官方人员，在群里直接邀请新生进各种禁言群，然后私信发课程领取。</li>\n</ol>\n"
     }

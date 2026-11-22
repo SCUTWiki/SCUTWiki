@@ -22,6 +22,7 @@ const routes = [
   { path: '/opensource', name: 'opensource', component: Opensource },
   { path: '/contact', name: 'contact', component: Contact },
   { path: '/more', name: 'more', component: More },
+  { path: '/more/:sub', name: 'more-sub', component: More },
   { path: '/about', name: 'about', component: About },
   { path: '/contact-us', name: 'team-contact', component: TeamContact },
   { path: '/support', name: 'support', component: Support },
