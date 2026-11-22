@@ -34,15 +34,15 @@ function humanSize(bytes) {
       <section class="pg-section">
         <ul v-if="files.length" class="pg-doc-list">
           <li v-for="file in files" :key="file.path">
-            <div class="pg-row">
+            <a class="pg-row" :href="file.url" target="_blank" rel="noopener">
               <b>{{ file.title }}</b>
               <span class="pg-row-meta">
                 {{ file.ext.toUpperCase() }}
                 <template v-if="humanSize(file.size)"> · {{ humanSize(file.size) }}</template>
                 <template v-if="file.updatedAt"> · {{ formatDate(file.updatedAt) }}</template>
+                · 打开 ↗
               </span>
-            </div>
-            <p>{{ file.path }}<template v-if="file.from"> · 引用自 {{ file.from }}</template></p>
+            </a>
           </li>
         </ul>
         <p v-else class="pg-note">还没有登记任何文件。</p>

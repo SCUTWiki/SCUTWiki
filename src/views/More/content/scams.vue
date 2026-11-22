@@ -4,7 +4,8 @@
 <p>2.勤工俭学群（各种群都常见），一般在群里发的不要理</p>
 
 <p>3.单独莫名发邮箱且没看到有其他通知，类似这样：</p>
-<img class="img-fluid" src="./scamsPhoto.png" alt="qq邮箱截图">
+<img class="img-fluid" src="/files/scamsPhoto.png" alt="qq邮箱截图">
+<p>4.冒充学校官方人员，在群里直接邀请新生进各种禁言群然后私信发课程领取</p>
 </template>
 
 <style scoped>

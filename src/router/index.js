@@ -14,6 +14,8 @@ import WikiEntry from '../views/wiki/WikiEntry.vue'
 import FileList from '../views/wiki/FileList.vue'
 import LinkList from '../views/wiki/LinkList.vue'
 
+const CricketGame = () => import('../views/Cricket/CricketGame.vue')
+
 const routes = [
   { path: '/', name: 'home', component: Home },
   { path: '/college', name: 'college', component: College },
@@ -22,6 +24,7 @@ const routes = [
   { path: '/opensource', name: 'opensource', component: Opensource },
   { path: '/contact', name: 'contact', component: Contact },
   { path: '/more', name: 'more', component: More },
+  { path: '/more/:sub', name: 'more-sub', component: More },
   { path: '/about', name: 'about', component: About },
   { path: '/contact-us', name: 'team-contact', component: TeamContact },
   { path: '/support', name: 'support', component: Support },
@@ -29,6 +32,7 @@ const routes = [
   { path: '/wiki/:slug', name: 'wiki-entry', component: WikiEntry },
   { path: '/files', name: 'files', component: FileList },
   { path: '/links', name: 'links', component: LinkList },
+  { path: '/cricket', name: 'cricket', component: CricketGame },
 ]
 
 export default createRouter({

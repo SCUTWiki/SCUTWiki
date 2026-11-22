@@ -96,6 +96,11 @@ for (const abs of mdFiles) {
   const raw = fs.readFileSync(abs, 'utf8')
   const { data, content } = matter(raw)
 
+  // 没有用 --- 包起来的 front-matter 时，整段会被当成正文，这里提醒一下
+  if (!raw.trimStart().startsWith('---')) {
+    console.warn(`[content] 缺少 front-matter（应以 --- 开头）：${relPath}`)
+  }
+
   const slug = String(data.slug || path.basename(abs, '.md')).trim()
   const title = String(data.title || firstHeading(content) || slug)
   const section = String(data.section || '未分类')
@@ -124,11 +129,20 @@ for (const abs of mdFiles) {
     }
   }
 
+  // 目录结构即归属：
+  //   src/content/more/scams.md              -> module=more,  submodule=null
+  //   src/content/college/campus/intro.md    -> module=college, submodule=campus
+  const parts = relPath.replace(/^src\/content\//, '').split('/')
+  const moduleName = parts[0] || 'root'
+  const submoduleName = parts.length > 2 ? parts[1] : null
+
   entries.push({
     type: 'doc',
     slug,
     title,
     section,
+    module: moduleName,
+    submodule: submoduleName,
     summary: String(data.summary || excerptOf(content)),
     updatedAt,
     links,
@@ -147,6 +161,17 @@ for (const abs of walk(CONTENT_DIR)) {
   if (!fileRefs.has(relPath)) fileRefs.set(relPath, { path: relPath, from: 'content', updatedAt: null })
 }
 
+// 文件的可打开地址：
+//   public/xxx      -> /xxx（站点直接访问）
+//   其他仓库路径    -> GitHub 页面（图片/PDF 可直接预览，也能下载）
+const REPO_URL = process.env.CONTENT_REPO || 'https://github.com/SCUTWiki/SCUTWiki'
+const REPO_BRANCH = process.env.CONTENT_BRANCH || 'dev'
+
+function fileUrl(p) {
+  if (p.startsWith('public/')) return '/' + p.slice('public/'.length)
+  return `${REPO_URL}/blob/${REPO_BRANCH}/${p}`
+}
+
 const files = [...fileRefs.values()].map((item) => ({
   type: 'file',
   title: path.basename(item.path),
@@ -154,6 +179,7 @@ const files = [...fileRefs.values()].map((item) => ({
   ext: path.extname(item.path).slice(1).toLowerCase(),
   size: fs.existsSync(path.join(ROOT, item.path)) ? fs.statSync(path.join(ROOT, item.path)).size : 0,
   from: item.from,
+  url: fileUrl(item.path),
   updatedAt: gitTime(item.path) || item.updatedAt || null,
 }))
 
