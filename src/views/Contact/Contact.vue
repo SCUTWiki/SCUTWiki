@@ -153,6 +153,19 @@ const favoriteGroups = computed(() =>
       .map((group) => ({ ...group, category: category.label, categoryId: category.id })),
   ),
 )
+const favoriteExpressServices = computed(() =>
+  expressServices.filter((service) => favoriteIds.value.has(`express:${service.id}`)),
+)
+const favoriteUtilityCampuses = computed(() =>
+  utilityCampuses.filter((campus) => favoriteIds.value.has(`utilities:${campus.id}`)),
+)
+const hasFavorites = computed(
+  () =>
+    favoriteContacts.value.length > 0 ||
+    favoriteGroups.value.length > 0 ||
+    favoriteExpressServices.value.length > 0 ||
+    favoriteUtilityCampuses.value.length > 0,
+)
 
 function openBoard(boardId) {
   searchQuery.value = ''
@@ -189,21 +202,37 @@ function openFavoriteGroup(group) {
   openBoard('groups')
 }
 
+function openFavoriteExpressService() {
+  serviceSection.value = 'express'
+  openBoard('services')
+}
+
+function openFavoriteUtilityCampus() {
+  serviceSection.value = 'utilities'
+  openBoard('services')
+}
+
+function goHome() {
+  router.push('/')
+}
+
 function returnHome() {
   searchQuery.value = ''
   router.push('/contact')
 }
 
-function toggleFavorite(contact) {
+function toggleFavorite(contact, type) {
+  const favoriteId =
+    type === 'express' || type === 'utilities' ? `${type}:${contact.id}` : contact.id
   const next = new Set(favoriteIds.value)
-  if (next.has(contact.id)) next.delete(contact.id)
-  else next.add(contact.id)
+  if (next.has(favoriteId)) next.delete(favoriteId)
+  else next.add(favoriteId)
 
   try {
     localStorage.setItem('scutwiki-contact-favorites', JSON.stringify([...next]))
     favoriteIds.value = next
     storageError.value = ''
-    notice.value = next.has(contact.id) ? '已加入收藏。' : '已取消收藏。'
+    notice.value = next.has(favoriteId) ? '已加入收藏。' : '已取消收藏。'
   } catch {
     storageError.value = '保存收藏失败，请检查浏览器存储权限后重试。'
   }
@@ -250,6 +279,10 @@ const officialSource = facultyDirectorySource
 <template>
   <Title />
   <div class="contact-page">
+    <button class="home-button" type="button" @click="goHome">
+      <span aria-hidden="true">←</span>
+      返回首页
+    </button>
     <header class="page-heading">
       <div>
         <p class="eyebrow">SCUT WIKI · CONTACT</p>
@@ -294,7 +327,8 @@ const officialSource = facultyDirectorySource
       </div>
 
       <section v-if="isFavorites" class="content-section">
-        <div v-if="favoriteContacts.length || favoriteGroups.length">
+        <div v-if="hasFavorites">
+          <h3 v-if="favoriteContacts.length" class="subheading">联系人</h3>
           <div v-if="favoriteContacts.length" class="contact-grid">
             <ContactCard
               v-for="contact in favoriteContacts"
@@ -311,6 +345,7 @@ const officialSource = facultyDirectorySource
               </template>
             </ContactCard>
           </div>
+          <h3 v-if="favoriteGroups.length" class="subheading">QQ群</h3>
           <div v-if="favoriteGroups.length" class="group-grid favorites-groups">
             <article v-for="group in favoriteGroups" :key="group.id" class="group-card">
               <span class="group-icon" aria-hidden="true">群</span>
@@ -322,13 +357,79 @@ const officialSource = facultyDirectorySource
                 class="favorite-toggle"
                 type="button"
                 :aria-label="`取消收藏${group.name} ${group.number}`"
-                @click="toggleFavorite(group)"
+                @click="toggleFavorite(group, 'group')"
               >★</button>
               <button class="primary-button" type="button" @click="copyText(group.number, 'QQ群号')">
                 复制群号
               </button>
               <button class="text-action" type="button" @click="openFavoriteGroup(group)">
                 查看所属分类
+              </button>
+            </article>
+          </div>
+          <h3 v-if="favoriteExpressServices.length" class="subheading">快递服务</h3>
+          <div v-if="favoriteExpressServices.length" class="campus-grid favorites-services">
+            <article
+              v-for="service in favoriteExpressServices"
+              :key="service.id"
+              class="info-card"
+            >
+              <div class="info-card-heading">
+                <h3>{{ service.campus }}快递服务</h3>
+                <button
+                  class="favorite-toggle"
+                  type="button"
+                  :aria-label="`取消收藏${service.campus}快递服务`"
+                  :aria-pressed="true"
+                  @click="toggleFavorite(service, 'express')"
+                >★</button>
+              </div>
+              <ul>
+                <li v-for="place in service.locations" :key="place">{{ place }}</li>
+              </ul>
+              <p class="source-note">{{ service.validity }}</p>
+              <button class="text-action" type="button" @click="openFavoriteExpressService">
+                查看快递服务
+              </button>
+            </article>
+          </div>
+          <h3 v-if="favoriteUtilityCampuses.length" class="subheading">水电指南</h3>
+          <div v-if="favoriteUtilityCampuses.length" class="campus-grid favorites-services">
+            <article
+              v-for="campus in favoriteUtilityCampuses"
+              :key="campus.id"
+              class="info-card service-card"
+            >
+              <div class="info-card-heading">
+                <h3>{{ campus.campus }}水电指南</h3>
+                <button
+                  class="favorite-toggle"
+                  type="button"
+                  :aria-label="`取消收藏${campus.campus}水电指南`"
+                  :aria-pressed="true"
+                  @click="toggleFavorite(campus, 'utilities')"
+                >★</button>
+              </div>
+              <div v-for="service in campus.services" :key="service.id" class="details-row">
+                <h4>{{ service.title }}</h4>
+                <p v-for="(step, index) in service.details" :key="index">{{ step }}</p>
+                <div v-if="service.actions?.length" class="action-list">
+                  <template v-for="action in service.actions" :key="action.label">
+                    <a
+                      v-if="action.href"
+                      :href="action.href"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {{ action.label }} ↗
+                    </a>
+                    <span v-else>{{ action.label }}</span>
+                  </template>
+                </div>
+              </div>
+              <p class="source-note">{{ campus.validity }}</p>
+              <button class="text-action" type="button" @click="openFavoriteUtilityCampus">
+                查看完整指南
               </button>
             </article>
           </div>
@@ -429,7 +530,7 @@ const officialSource = facultyDirectorySource
               type="button"
               :aria-label="favoriteIds.has(group.id) ? `取消收藏${group.name} ${group.number}` : `收藏${group.name} ${group.number}`"
               :aria-pressed="favoriteIds.has(group.id)"
-              @click="toggleFavorite(group)"
+              @click="toggleFavorite(group, 'group')"
             >
               {{ favoriteIds.has(group.id) ? '★' : '☆' }}
             </button>
@@ -515,7 +616,7 @@ const officialSource = facultyDirectorySource
                         type="button"
                         :aria-label="favoriteIds.has(college.id) ? `取消收藏${college.college}` : `收藏${college.college}`"
                         :aria-pressed="favoriteIds.has(college.id)"
-                        @click="toggleFavorite(college)"
+                        @click="toggleFavorite(college, 'college')"
                       >
                         {{ favoriteIds.has(college.id) ? '★' : '☆' }}
                       </button>
@@ -619,7 +720,18 @@ const officialSource = facultyDirectorySource
           <h3 class="subheading">日常快递服务</h3>
           <div class="campus-grid">
             <article v-for="service in expressServices" :key="service.campus" class="info-card">
-              <h4>{{ service.campus }}</h4>
+              <div class="info-card-heading">
+                <h4>{{ service.campus }}</h4>
+                <button
+                  class="favorite-toggle"
+                  type="button"
+                  :aria-label="favoriteIds.has(`express:${service.id}`) ? `取消收藏${service.campus}快递服务` : `收藏${service.campus}快递服务`"
+                  :aria-pressed="favoriteIds.has(`express:${service.id}`)"
+                  @click="toggleFavorite(service, 'express')"
+                >
+                  {{ favoriteIds.has(`express:${service.id}`) ? '★' : '☆' }}
+                </button>
+              </div>
               <ul>
                 <li v-for="place in service.locations" :key="place">{{ place }}</li>
               </ul>
@@ -673,7 +785,18 @@ const officialSource = facultyDirectorySource
           </p>
           <div class="campus-grid">
             <article v-for="campus in utilityCampuses" :key="campus.campus" class="info-card service-card">
-              <h3>{{ campus.campus }}</h3>
+              <div class="info-card-heading">
+                <h3>{{ campus.campus }}</h3>
+                <button
+                  class="favorite-toggle"
+                  type="button"
+                  :aria-label="favoriteIds.has(`utilities:${campus.id}`) ? `取消收藏${campus.campus}水电指南` : `收藏${campus.campus}水电指南`"
+                  :aria-pressed="favoriteIds.has(`utilities:${campus.id}`)"
+                  @click="toggleFavorite(campus, 'utilities')"
+                >
+                  {{ favoriteIds.has(`utilities:${campus.id}`) ? '★' : '☆' }}
+                </button>
+              </div>
               <div v-for="service in campus.services" :key="service.title" class="details-row">
                 <h4>{{ service.title }}</h4>
                 <p v-for="(step, index) in service.details" :key="index">{{ step }}</p>
@@ -762,6 +885,7 @@ h1 {
 }
 
 .favorite-entry,
+.home-button,
 .back-button,
 .primary-button,
 .text-action,
@@ -797,16 +921,36 @@ h1 {
   white-space: nowrap;
 }
 
+.home-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+  padding: 0.55rem 0.85rem;
+}
+
 .favorite-entry span {
   color: #d3a62d;
 }
 
+.home-button:hover,
 .favorite-entry:hover,
 .back-button:hover,
 .text-action:hover,
 .copy-inline:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.home-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.home-button:active {
+  background: color-mix(in srgb, var(--accent) 10%, var(--color-background));
+  transform: translateY(1px);
 }
 
 .board-grid,
