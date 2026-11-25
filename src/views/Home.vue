@@ -6,6 +6,7 @@ import ModuleCard from '../components/home/ModuleCard.vue'
 import QuickFolder from '../components/home/QuickFolder.vue'
 import StatsLedger from '../components/home/StatsLedger.vue'
 import BottomBand from '../components/home/BottomBand.vue'
+import HomeRail from '../components/home/HomeRail.vue'
 import { useContentStats, fileTypeSummary, formatDate, typeLabel } from '../composables/useContentStats'
 
 const modules = [
@@ -97,6 +98,14 @@ const footerLinks = [
   { label: '联系我们 / 投稿', index: '02', href: '/contact-us' },
   { label: '支持 / 赞助我们', index: '03', href: '/support' },
 ]
+
+const railItems = [
+  { id: 'home-mods', label: '模块' },
+  { id: 'home-quick', label: '学生常用' },
+  { id: 'home-total', label: '汇总' },
+  { id: 'home-push', label: '推送' },
+  { id: 'home-foot', label: '底栏' },
+]
 </script>
 
 <template>
@@ -106,15 +115,15 @@ const footerLinks = [
     <main class="hp-main">
       <div class="hp-wrap">
         <div class="hp-grid">
-          <!-- 左侧留空：以后放互动 -->
+          <!-- 左侧页面索引：快速定位各区块 -->
           <div class="hp-gutter">
-            <span class="hp-gutter-label">互动区 / SOON</span>
+            <span class="hp-gutter-label">页面索引</span>
             <div class="hp-gutter-line" />
-            <div class="hp-gutter-box">预留</div>
+            <HomeRail :items="railItems" />
           </div>
 
           <div>
-            <section class="hp-mods" aria-label="模块入口">
+            <section id="home-mods" class="hp-mods" aria-label="模块入口">
               <ModuleCard
                 v-for="item in modules"
                 :key="item.index"
@@ -128,7 +137,7 @@ const footerLinks = [
               />
             </section>
 
-            <section class="hp-push" aria-label="最新推送">
+            <section id="home-push" class="hp-push" aria-label="最新推送">
               <div class="hp-push-head">
                 <h2>推送</h2>
                 <span class="hp-line" />
@@ -149,13 +158,13 @@ const footerLinks = [
           </div>
 
           <aside class="hp-side">
-            <QuickFolder :links="quickLinks" />
-            <StatsLedger :rows="stats" />
+            <div id="home-quick"><QuickFolder :links="quickLinks" /></div>
+            <div id="home-total"><StatsLedger :rows="stats" /></div>
           </aside>
         </div>
       </div>
     </main>
 
-    <BottomBand :links="footerLinks" />
+    <BottomBand id="home-foot" :links="footerLinks" />
   </div>
 </template>
