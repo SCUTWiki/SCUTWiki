@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import Title from '../components/Title.vue'
 import ModuleCard from '../components/home/ModuleCard.vue'
@@ -78,7 +78,7 @@ const quickLinks = [
   { label: '全部入口' },
 ]
 
-const { counts, fileTypes, recent } = useContentStats()
+const { counts, fileTypes, entries } = useContentStats()
 
 const stats = computed(() => [
   { label: '文章汇总', count: counts.doc, href: '/wiki' },
@@ -91,7 +91,35 @@ const stats = computed(() => [
   { label: '链接汇总', count: counts.link, href: '/links' },
 ])
 
-const latest = computed(() => recent.find((item) => item.type === 'doc') || recent[0])
+// 推送：取最近的几篇词条轮播
+const pushItems = computed(() => entries.filter((item) => item.type === 'doc').slice(0, 5))
+
+const pushIndex = ref(0)
+const pushPaused = ref(false)
+let pushTimer = null
+
+const currentPush = computed(() => pushItems.value[pushIndex.value] || null)
+
+function startPushTimer() {
+  stopPushTimer()
+  pushTimer = setInterval(() => {
+    if (pushPaused.value || pushItems.value.length < 2) return
+    pushIndex.value = (pushIndex.value + 1) % pushItems.value.length
+  }, 6000)
+}
+
+function stopPushTimer() {
+  if (pushTimer) clearInterval(pushTimer)
+  pushTimer = null
+}
+
+function goToPush(index) {
+  pushIndex.value = index
+  startPushTimer()
+}
+
+onMounted(startPushTimer)
+onBeforeUnmount(stopPushTimer)
 
 const footerLinks = [
   { label: '关于我们', index: '01', href: '/about' },
@@ -142,18 +170,47 @@ const railItems = [
                 <h2>推送</h2>
                 <span class="hp-line" />
               </div>
-              <component
-                :is="latest?.href ? 'RouterLink' : 'div'"
+              <div
                 class="hp-push-card"
-                :to="latest?.href || undefined"
+                @mouseenter="pushPaused = true"
+                @mouseleave="pushPaused = false"
               >
-                <div class="hp-thumb">最近更新</div>
-                <div class="hp-push-text">
-                  <h3>{{ latest?.title || '暂无更新' }}</h3>
-                  <p v-if="latest">更新于 {{ formatDate(latest.updatedAt) }} · {{ typeLabel(latest.type) }}</p>
-                  <p v-else>还没有可展示的内容。</p>
+                <Transition name="hp-swap" mode="out-in">
+                  <RouterLink
+                    v-if="currentPush"
+                    :key="currentPush.slug"
+                    class="hp-push-link"
+                    :to="currentPush.href"
+                  >
+                    <div class="hp-thumb">
+                      <span class="hp-thumb-num">{{ String(pushIndex + 1).padStart(2, '0') }}</span>
+                      <span class="hp-thumb-total">/ {{ String(pushItems.length).padStart(2, '0') }}</span>
+                    </div>
+                    <div class="hp-push-text">
+                      <h3>{{ currentPush.title }}</h3>
+                      <p>{{ currentPush.summary }}</p>
+                      <p class="hp-push-meta">
+                        更新于 {{ formatDate(currentPush.updatedAt) }} · {{ currentPush.section }}
+                      </p>
+                    </div>
+                  </RouterLink>
+                  <div v-else key="empty" class="hp-push-link">
+                    <div class="hp-thumb">暂无</div>
+                    <div class="hp-push-text"><h3>还没有可展示的内容</h3></div>
+                  </div>
+                </Transition>
+
+                <div v-if="pushItems.length > 1" class="hp-push-dots">
+                  <button
+                    v-for="(item, i) in pushItems"
+                    :key="item.slug"
+                    type="button"
+                    :class="{ on: i === pushIndex }"
+                    :aria-label="`第 ${i + 1} 篇：${item.title}`"
+                    @click="goToPush(i)"
+                  />
                 </div>
-              </component>
+              </div>
             </section>
           </div>
 
