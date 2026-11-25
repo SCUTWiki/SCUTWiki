@@ -1278,3 +1278,44 @@ html[data-theme='light'] .hp-rail-item.on { color: #1d7a54; }
 .hp-update:hover .hp-txt { color: var(--hp-cream); }
 .hp-update:hover .hp-dot { box-shadow: 0 0 0 4px rgba(47, 128, 96, 0.18); }
 html[data-theme='light'] .hp-update:hover .hp-txt { color: #13221b; }
+
+/* ---------- 推送轮播 ---------- */
+.hp-push-card { display: block; }
+.hp-push-link {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+.hp-thumb { display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+.hp-thumb-num {
+  font-family: var(--hp-serif);
+  font-size: 26px;
+  letter-spacing: 0;
+  color: rgba(242, 239, 228, 0.55);
+}
+.hp-thumb-total { font-size: 10px; letter-spacing: 1px; color: rgba(242, 239, 228, 0.28); }
+.hp-push-meta { opacity: 0.7; }
+
+.hp-push-dots { display: flex; gap: 6px; justify-content: flex-end; margin-top: 10px; }
+.hp-push-dots button {
+  width: 18px;
+  height: 5px;
+  padding: 0;
+  border-radius: 3px;
+  border: 1px solid rgba(242, 239, 228, 0.22);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.hp-push-dots button:hover { border-color: var(--hp-green-soft); }
+.hp-push-dots button.on { background: var(--hp-green); border-color: var(--hp-green); }
+
+.hp-swap-enter-active,
+.hp-swap-leave-active { transition: opacity 0.22s ease, transform 0.22s ease; }
+.hp-swap-enter-from { opacity: 0; transform: translateY(6px); }
+.hp-swap-leave-to { opacity: 0; transform: translateY(-6px); }
+
+html[data-theme='light'] .hp-push-dots button { border-color: rgba(19, 34, 27, 0.2); }
