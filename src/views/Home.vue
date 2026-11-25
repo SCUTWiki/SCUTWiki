@@ -67,15 +67,9 @@ const modules = [
 ]
 
 const quickLinks = [
-  { label: '教务系统' },
-  { label: '成绩查询' },
-  { label: '校历' },
-  { label: '课程表' },
-  { label: '图书馆' },
-  { label: '校园卡' },
-  { label: '校车时刻' },
-  { label: '报修' },
-  { label: '全部入口' },
+  // 课程中心（百步梯）——如果学校换了入口，改这里的地址即可
+  { label: '课程中心', href: 'https://course.scut.edu.cn' },
+  { label: '交流群', to: '/contact?board=groups' },
 ]
 
 const { counts, fileTypes, entries } = useContentStats()

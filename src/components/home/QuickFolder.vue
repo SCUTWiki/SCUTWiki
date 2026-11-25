@@ -1,9 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   links: { type: Array, required: true },
 })
+
+// 固定 3×3 共 9 格，多余的留空
+const slots = computed(() => [
+  ...props.links,
+  ...Array(Math.max(0, 9 - props.links.length)).fill(null),
+])
 
 const flipped = ref(false)
 </script>
@@ -17,7 +23,15 @@ const flipped = ref(false)
         <div class="hp-folder-body">
           <div class="hp-folder-paper">
             <div class="hp-quick">
-              <a v-for="item in links" :key="item.label" :href="item.href || '#'">{{ item.label }}</a>
+              <template v-for="(item, index) in slots" :key="index">
+                <a v-if="item?.href" :href="item.href" target="_blank" rel="noopener">
+                  {{ item.label }}
+                </a>
+                <RouterLink v-else-if="item?.to" :to="item.to">
+                  {{ item.label }}
+                </RouterLink>
+                <span v-else class="hp-quick-empty" aria-hidden="true" />
+              </template>
             </div>
           </div>
         </div>
