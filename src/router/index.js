@@ -14,7 +14,8 @@ import WikiEntry from '../views/wiki/WikiEntry.vue'
 import FileList from '../views/wiki/FileList.vue'
 import LinkList from '../views/wiki/LinkList.vue'
 
-const CricketGame = () => import('../views/Cricket/CricketGame.vue')
+// 限时词斗蛐蛐入口暂时下线，代码保留，恢复时取消下面两行注释即可
+// const CricketGame = () => import('../views/Cricket/CricketGame.vue')
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -32,7 +33,7 @@ const routes = [
   { path: '/wiki/:slug', name: 'wiki-entry', component: WikiEntry },
   { path: '/files', name: 'files', component: FileList },
   { path: '/links', name: 'links', component: LinkList },
-  { path: '/cricket', name: 'cricket', component: CricketGame },
+  // { path: '/cricket', name: 'cricket', component: CricketGame },
 ]
 
 export default createRouter({

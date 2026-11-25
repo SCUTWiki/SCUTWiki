@@ -106,24 +106,14 @@ const footerLinks = [
     <main class="hp-main">
       <div class="hp-wrap">
         <div class="hp-grid">
-          <!-- 互动实验入口：限定词斗蛐蛐 -->
+          <!-- 左侧留空：以后放互动 -->
           <div class="hp-gutter">
-            <span class="hp-gutter-label">互动区 / PLAY</span>
+            <span class="hp-gutter-label">互动区 / SOON</span>
             <div class="hp-gutter-line" />
-            <RouterLink class="hp-gutter-play" to="/cricket" aria-label="进入限定词斗蛐蛐">
-              <span class="hp-gutter-play-kicker">PLAY 001</span>
-              <span class="hp-gutter-play-title">限定词斗蛐蛐</span>
-              <span class="hp-gutter-play-foot">五词成阵 ↗</span>
-            </RouterLink>
+            <div class="hp-gutter-box">预留</div>
           </div>
 
           <div>
-            <RouterLink class="hp-mobile-game" to="/cricket">
-              <span class="hp-mobile-game-kicker">互动实验 001 · PLAY</span>
-              <strong>限定词斗蛐蛐</strong>
-              <span class="hp-mobile-game-foot">五词成阵 · 自动对决 ↗</span>
-            </RouterLink>
-
             <section class="hp-mods" aria-label="模块入口">
               <ModuleCard
                 v-for="item in modules"
