@@ -1268,3 +1268,13 @@ html[data-theme='light'] .hp-gutter-play:hover .hp-gutter-play-title {
 html[data-theme='light'] .hp-rail-item { color: rgba(18, 34, 26, 0.4); }
 html[data-theme='light'] .hp-rail-item:hover { color: #13221b; }
 html[data-theme='light'] .hp-rail-item.on { color: #1d7a54; }
+
+/* 顶部「最新」条：现在是链接 */
+.hp-update {
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hp-update:hover .hp-txt { color: var(--hp-cream); }
+.hp-update:hover .hp-dot { box-shadow: 0 0 0 4px rgba(47, 128, 96, 0.18); }
+html[data-theme='light'] .hp-update:hover .hp-txt { color: #13221b; }

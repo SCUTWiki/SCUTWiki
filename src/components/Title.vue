@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
+import { useContentStats, formatDate } from '../composables/useContentStats'
 
 defineProps({
   variant: { type: String, default: 'home' },
@@ -15,6 +16,17 @@ const { theme, toggle: toggleTheme } = useTheme()
 const keyword = ref('')
 const searchOpen = ref(false)
 const flagOpen = ref(false)
+
+const { entries, counts } = useContentStats()
+
+// 最近更新的一篇词条
+const latest = computed(() => entries[0] || null)
+const updateText = computed(() =>
+  latest.value
+    ? `《${latest.value.title}》 更新于 ${formatDate(latest.value.updatedAt)} · 共 ${counts.doc} 篇词条`
+    : '暂无更新',
+)
+
 
 function goHome() {
   router.push('/')
@@ -80,12 +92,12 @@ function submitSearch() {
       </span>
     </a>
 
-    <!-- 最新更新 -->
-    <div class="hp-tool hp-update">
+    <!-- 最新更新：取词条里最近更新的一篇 -->
+    <RouterLink class="hp-tool hp-update" :to="latest?.href || '/wiki'">
       <i class="hp-dot" />
       <span class="hp-tag">最新</span>
-      <span class="hp-txt">2026 秋季选课攻略 已更新 · 新增 3 篇学院介绍 · 绩点计算器上线</span>
-    </div>
+      <span class="hp-txt">{{ updateText }}</span>
+    </RouterLink>
 
     <!-- 搜索（手机端收成按钮） -->
     <form
