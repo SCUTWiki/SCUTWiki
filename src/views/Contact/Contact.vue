@@ -212,6 +212,16 @@ function openFavoriteUtilityCampus() {
   openBoard('services')
 }
 
+function utilityDetailParts(detail) {
+  const separator = detail.indexOf('：')
+  if (separator <= 0 || separator > 13) return { label: '', content: detail }
+
+  return {
+    label: detail.slice(0, separator),
+    content: detail.slice(separator + 1),
+  }
+}
+
 function goHome() {
   router.push('/')
 }
@@ -394,11 +404,11 @@ const officialSource = facultyDirectorySource
             </article>
           </div>
           <h3 v-if="favoriteUtilityCampuses.length" class="subheading">水电指南</h3>
-          <div v-if="favoriteUtilityCampuses.length" class="campus-grid favorites-services">
+          <div v-if="favoriteUtilityCampuses.length" class="campus-grid favorites-services utility-guide-grid">
             <article
               v-for="campus in favoriteUtilityCampuses"
               :key="campus.id"
-              class="info-card service-card"
+              class="info-card service-card utility-guide-card"
             >
               <div class="info-card-heading">
                 <h3>{{ campus.campus }}水电指南</h3>
@@ -410,9 +420,16 @@ const officialSource = facultyDirectorySource
                   @click="toggleFavorite(campus, 'utilities')"
                 >★</button>
               </div>
-              <div v-for="service in campus.services" :key="service.id" class="details-row">
+              <section v-for="service in campus.services" :key="service.id" class="details-row utility-service">
                 <h4>{{ service.title }}</h4>
-                <p v-for="(step, index) in service.details" :key="index">{{ step }}</p>
+                <p
+                  v-for="(detail, index) in service.details.map(utilityDetailParts)"
+                  :key="index"
+                  class="utility-detail"
+                >
+                  <strong v-if="detail.label" class="utility-detail-label">{{ detail.label }}：</strong>
+                  {{ detail.content }}
+                </p>
                 <div v-if="service.actions?.length" class="action-list">
                   <template v-for="action in service.actions" :key="action.label">
                     <a
@@ -426,7 +443,7 @@ const officialSource = facultyDirectorySource
                     <span v-else>{{ action.label }}</span>
                   </template>
                 </div>
-              </div>
+              </section>
               <p class="source-note">{{ campus.validity }}</p>
               <button class="text-action" type="button" @click="openFavoriteUtilityCampus">
                 查看完整指南
@@ -783,8 +800,12 @@ const officialSource = facultyDirectorySource
             <a :href="utilitySourceUrl" target="_blank" rel="noopener noreferrer">查看原文 ↗</a>
             <button class="copy-inline" type="button" @click="copyText(utilitySourceUrl, '来源网址')">复制原文链接</button>
           </p>
-          <div class="campus-grid">
-            <article v-for="campus in utilityCampuses" :key="campus.campus" class="info-card service-card">
+          <div class="campus-grid utility-guide-grid">
+            <article
+              v-for="campus in utilityCampuses"
+              :key="campus.campus"
+              class="info-card service-card utility-guide-card"
+            >
               <div class="info-card-heading">
                 <h3>{{ campus.campus }}</h3>
                 <button
@@ -797,9 +818,16 @@ const officialSource = facultyDirectorySource
                   {{ favoriteIds.has(`utilities:${campus.id}`) ? '★' : '☆' }}
                 </button>
               </div>
-              <div v-for="service in campus.services" :key="service.title" class="details-row">
+              <section v-for="service in campus.services" :key="service.title" class="details-row utility-service">
                 <h4>{{ service.title }}</h4>
-                <p v-for="(step, index) in service.details" :key="index">{{ step }}</p>
+                <p
+                  v-for="(detail, index) in service.details.map(utilityDetailParts)"
+                  :key="index"
+                  class="utility-detail"
+                >
+                  <strong v-if="detail.label" class="utility-detail-label">{{ detail.label }}：</strong>
+                  {{ detail.content }}
+                </p>
                 <div v-if="service.actions?.length" class="action-list">
                   <template v-for="action in service.actions" :key="action.label">
                     <a
@@ -813,7 +841,7 @@ const officialSource = facultyDirectorySource
                     <span v-else>{{ action.label }}</span>
                   </template>
                 </div>
-              </div>
+              </section>
               <p class="source-note">{{ campus.validity }}</p>
             </article>
           </div>
@@ -1125,6 +1153,21 @@ h1 {
   line-height: 1.75;
 }
 
+.utility-guide-grid {
+  gap: 0.8rem;
+}
+
+.utility-guide-card {
+  padding: clamp(0.9rem, 1.6vw, 1.15rem);
+}
+
+.utility-guide-card > .info-card-heading h3 {
+  min-width: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
 .info-card h3,
 .info-card h4,
 .group-card h3 {
@@ -1227,11 +1270,62 @@ h1 {
   border-top: 1px solid var(--color-border);
 }
 
+.utility-service {
+  min-width: 0;
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+}
+
+.utility-service h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.utility-detail {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.utility-detail-label {
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+.utility-guide-card .action-list,
+.utility-guide-card .action-list span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
 .college-row-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.5rem;
+}
+
+.college-row-heading h4 {
+  flex: 1 1 12rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.college-row-heading .status-pill {
+  flex: 0 1 auto;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.college-row-heading .favorite-toggle {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .copy-inline {
