@@ -9,62 +9,83 @@ import BottomBand from '../components/home/BottomBand.vue'
 import HomeRail from '../components/home/HomeRail.vue'
 import { useContentStats, fileTypeSummary, formatDate, typeLabel } from '../composables/useContentStats'
 
-const modules = [
+// 六个模块的固定信息；目录与代表内容优先取实际词条，没有词条时用页面里真实存在的结构
+const moduleDefs = [
   {
+    module: 'college',
     index: '01',
     name: '大学主模块',
     glyph: 'hall',
     href: '/college',
     desc: '报到、选课、考试与绩点，<br>新生最常走的那条路',
-    toc: ['新生报到', '选课', '考试与成绩', '绩点与保研'],
-    featured: '《2026 新生入学指南》已更新',
+    fallbackToc: ['校园', '学习', '生活'],
+    fallbackFeatured: '校园 / 学习 / 生活 三个板块',
   },
   {
+    module: 'faculty',
     index: '02',
     name: '学院模块',
     glyph: 'academy',
     href: '/faculty',
     desc: '按学院划分的课程、<br>导师与实验室信息',
-    toc: ['学院一览', '导师介绍', '实验室', '培养方案'],
-    featured: '计算机学院 · 实验室开放日',
+    fallbackToc: ['学院图鉴'],
+    fallbackFeatured: '学院图鉴 · 6 个学院',
   },
   {
+    module: 'organization',
     index: '03',
     name: '组织模块',
     glyph: 'org',
     href: '/club',
     desc: '校级与院级组织、<br>社团的招新与活动',
-    toc: ['校级组织', '院级组织', '社团招新'],
-    featured: '社团招新周 · 9 月 12 日开始',
+    fallbackToc: ['校级组织', '院级组织', '社团'],
+    fallbackFeatured: '校级组织名录已收录',
   },
   {
+    module: 'opensource',
     index: '04',
     name: '开源模块',
     glyph: 'branch',
     href: '/opensource',
     desc: '同学做的小工具、<br>脚本与开源项目',
-    toc: ['工具合集', '脚本仓库', '贡献指南'],
-    featured: '绩点计算器 v2 已上线',
+    fallbackToc: ['项目动态', '新贡献者入门', '公告与动态', '快速入口'],
+    fallbackFeatured: '项目动态与新贡献者入门',
   },
   {
+    module: 'contact',
     index: '05',
     name: '联系模块',
     glyph: 'phone',
     href: '/contact',
     desc: '老师、学长与合作者<br>的联系方式',
-    toc: ['学院办公室', '学长答疑', '投稿方式'],
-    featured: '投稿邮箱：wiki@scut.example',
+    fallbackToc: ['学院导师联系方式', '校园交流群', '学院与辅导员联系方式', '校园生活服务'],
+    fallbackFeatured: '导师 / 交流群 / 辅导员 / 生活服务',
   },
   {
+    module: 'more',
     index: '06',
     name: '其他模块',
     glyph: 'person',
     href: '/more',
     desc: '杂文、群分享、<br>兴趣与随手记',
-    toc: ['二手交易', '常见风险', '杂文'],
-    featured: '二手交易群信息已更新',
+    fallbackToc: ['常见风险', '箴言', '杂文'],
+    fallbackFeatured: '常见风险、箴言与杂文',
   },
 ]
+
+const modules = computed(() =>
+  moduleDefs.map((def) => {
+    const list = entries.filter((entry) => entry.module === def.module)
+    const latest = list[0]
+    return {
+      ...def,
+      toc: list.length ? list.slice(0, 4).map((entry) => entry.title) : def.fallbackToc,
+      featured: latest
+        ? `《${latest.title}》 · ${formatDate(latest.updatedAt)}`
+        : def.fallbackFeatured,
+    }
+  }),
+)
 
 const quickLinks = [
   // 课程中心（百步梯）——如果学校换了入口，改这里的地址即可
