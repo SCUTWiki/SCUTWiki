@@ -86,6 +86,34 @@ function excerptOf(md, max = 80) {
   return text.length > max ? text.slice(0, max) + '…' : text
 }
 
+/** front-matter 里的 links 可能是数组、单个字符串，或逗号/换行分隔的字符串 */
+function normalizeLinks(value) {
+  if (!value) return []
+  const raw = Array.isArray(value) ? value : String(value).split(/[\s,，]+/)
+  const out = []
+  for (const item of raw) {
+    const url = typeof item === 'object' && item !== null ? item.url : item
+    const text = String(url ?? '').trim()
+    if (text) out.push(text)
+  }
+  return [...new Set(out)]
+}
+
+/** 正文里的链接：优先取 Markdown 的 [文字](url) 文字，其次裸 URL */
+function bodyLinks(md) {
+  // 去掉代码块和行内代码，避免把示例链接也算进去
+  const text = md.replace(/```[\s\S]*?```/g, ' ').replace(/`[^`]*`/g, ' ')
+  const map = new Map()
+  for (const m of text.matchAll(/\[([^\]]*)\]\((https?:\/\/[^)\s]+)\)/g)) {
+    map.set(m[2], (m[1] || m[2]).trim())
+  }
+  for (const m of text.matchAll(/https?:\/\/[^\s)\]<>"']+/g)) {
+    const url = m[0].replace(/[.,;:]+$/, '')
+    if (!map.has(url)) map.set(url, url)
+  }
+  return map
+}
+
 const mdFiles = walk(CONTENT_DIR).filter((f) => f.toLowerCase().endsWith('.md'))
 const entries = []
 const fileRefs = new Map()
@@ -106,7 +134,9 @@ for (const abs of mdFiles) {
   const section = String(data.section || '未分类')
   const updatedAt = toISOString(data.updatedAt, relPath)
 
-  const links = [...new Set((Array.isArray(data.links) ? data.links : []).map(String))]
+  // front-matter + 正文里的链接都算
+  const inBody = bodyLinks(content)
+  const links = [...new Set([...normalizeLinks(data.links), ...inBody.keys()])]
   const files = [...new Set((Array.isArray(data.files) ? data.files : []).map(String))]
 
   for (const file of files) {
@@ -125,7 +155,12 @@ for (const abs of mdFiles) {
   for (const url of links) {
     const prev = linkRefs.get(url)
     if (!prev || String(updatedAt || '') > String(prev.updatedAt || '')) {
-      linkRefs.set(url, { url, from: slug, updatedAt })
+      linkRefs.set(url, {
+        url,
+        from: slug,
+        title: inBody.get(url) || url,
+        updatedAt,
+      })
     }
   }
 
@@ -185,7 +220,7 @@ const files = [...fileRefs.values()].map((item) => ({
 
 const links = [...linkRefs.values()].map((item) => ({
   type: 'link',
-  title: item.url,
+  title: item.title || item.url,
   url: item.url,
   host: (() => {
     try {

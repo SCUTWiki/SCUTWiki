@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import '../../assets/pages.css'
 
 import Title from '../../components/Title.vue'
@@ -17,8 +17,7 @@ const { links } = useContentStats()
         <span class="pg-eyebrow">LINKS / 链接</span>
         <h1>链接汇总</h1>
         <p class="pg-lead">
-          共 {{ links.length }} 条外链，按更新时间排序。词条 front-matter 的
-          <code>links:</code> 会自动去重汇总到这里。
+          共 {{ links.length }} 条外链，按更新时间排序。词条 front-matter 和正文里的链接都会自动去重汇总到这里。
         </p>
       </header>
 
@@ -28,8 +27,8 @@ const { links } = useContentStats()
         <ul v-if="links.length" class="pg-doc-list">
           <li v-for="link in links" :key="link.url">
             <a :href="link.url" target="_blank" rel="noopener">
-              <b>{{ link.host || link.url }}</b>
-              <span>{{ formatDate(link.updatedAt) }}</span>
+              <b>{{ link.title && link.title !== link.url ? link.title : (link.host || link.url) }}</b>
+              <span>{{ link.host }} · {{ formatDate(link.updatedAt) }}</span>
             </a>
           </li>
         </ul>
