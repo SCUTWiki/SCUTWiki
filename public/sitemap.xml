@@ -2,72 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://scutwiki.com/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/college</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/faculty</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/club</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/opensource</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/contact</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/more</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/wiki</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/files</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/links</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/about</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/contact-us</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://scutwiki.com/support</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://scutwiki.com/wiki/about</loc>
-    <lastmod>2026-11-22</lastmod>
+    <loc>https://scutwiki.com/wiki/Software_Hardware_Advice</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://scutwiki.com/wiki/Communicate_withTeacher</loc>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
