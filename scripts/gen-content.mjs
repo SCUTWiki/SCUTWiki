@@ -122,7 +122,16 @@ const linkRefs = new Map()
 for (const abs of mdFiles) {
   const relPath = rel(abs)
   const raw = fs.readFileSync(abs, 'utf8')
-  const { data, content } = matter(raw)
+
+  // 单个文件的 front-matter 写错时只跳过它，不让整次扫描失败
+  let parsed
+  try {
+    parsed = matter(raw)
+  } catch (error) {
+    console.warn(`[content] front-matter 解析失败，已跳过 ${relPath}：${error.message}`)
+    continue
+  }
+  const { data, content } = parsed
 
   // 没有用 --- 包起来的 front-matter 时，整段会被当成正文，这里提醒一下
   if (!raw.trimStart().startsWith('---')) {
