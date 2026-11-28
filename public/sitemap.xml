@@ -66,6 +66,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://scutwiki.com/wiki/Web_make_Now</loc>
+    <lastmod>2026-11-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://scutwiki.com/wiki/Software_Hardware_Advice</loc>
     <lastmod>2026-11-27</lastmod>
     <priority>0.6</priority>
